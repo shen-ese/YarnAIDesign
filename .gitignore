@@ -1,0 +1,5 @@
+# Playwright MCP artefacts from local verification
+.playwright-mcp/
+
+# macOS
+.DS_Store

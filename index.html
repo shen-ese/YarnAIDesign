@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YarnAI — Loomery's AI-native method</title>
+<meta name="description" content="YarnAI is how Loomery puts senior product, design and engineering judgement in charge of AI agents, end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ========================= NAV ========================= -->
+<header class="nav">
+  <a class="nav__mark" href="/">Loomery</a>
+  <div class="nav__right">
+    <a class="nav__link" href="/get-in-touch">Get in touch</a>
+    <button class="nav__menu" type="button">Menu <span class="nav__dots"><i></i><i></i><i></i><i></i></span></button>
+  </div>
+</header>
+
+<!-- ========================= HERO ========================= -->
+<section class="hero">
+  <div class="hero__grid" aria-hidden="true">
+    <svg class="hero__weave" viewBox="0 0 1440 720" preserveAspectRatio="xMaxYMid slice">
+      <defs>
+        <!-- the field: a dot lattice, the same language as the product marks -->
+        <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
+          <circle cx="15" cy="15" r="1.6" fill="#ffffff"/>
+        </pattern>
+        <linearGradient id="fadeDots" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0.00" stop-color="#3a3a3a"/>
+          <stop offset="0.44" stop-color="#5c5c5c"/>
+          <stop offset="0.84" stop-color="#ffffff"/>
+        </linearGradient>
+        <mask id="dotMask"><rect width="1440" height="720" fill="url(#fadeDots)"/></mask>
+
+        <!-- the yarn starts behind the copy at zero and reaches full by the
+             right edge. Eased, not linear: a straight ramp would already be
+             at 60% where the headline ends. -->
+        <linearGradient id="fadeYarn" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0.00" stop-color="#000000"/>
+          <stop offset="0.30" stop-color="#0a0a0a"/>
+          <stop offset="0.48" stop-color="#1c1c1c"/>
+          <stop offset="0.62" stop-color="#3a3a3a"/>
+          <stop offset="0.74" stop-color="#7a7a7a"/>
+          <stop offset="0.85" stop-color="#c4c4c4"/>
+          <stop offset="0.95" stop-color="#ffffff"/>
+        </linearGradient>
+        <mask id="yarnMask"><rect width="1440" height="720" fill="url(#fadeYarn)"/></mask>
+      </defs>
+
+      <rect width="1440" height="720" fill="url(#dots)" mask="url(#dotMask)" opacity="0.30"/>
+
+      <!-- lattice-aligned sparkles: lit dots in the same grid -->
+      <g class="weave-sparks" mask="url(#dotMask)">
+        <g class="spark" style="--sd:1.5s"><circle class="sp" cx="1095" cy="522" r="2.1"/><circle class="sp" cx="1095" cy="548" r="2.1"/><circle class="sp sp--core" cx="1069" cy="574" r="2.6"/><circle class="sp sp--core" cx="1095" cy="574" r="2.6"/><circle class="sp sp--core" cx="1121" cy="574" r="2.6"/><circle class="sp" cx="1017" cy="600" r="2.1"/><circle class="sp" cx="1043" cy="600" r="2.1"/><circle class="sp sp--core" cx="1069" cy="600" r="2.6"/><circle class="sp sp--core" cx="1095" cy="600" r="2.6"/><circle class="sp sp--core" cx="1121" cy="600" r="2.6"/><circle class="sp" cx="1147" cy="600" r="2.1"/><circle class="sp" cx="1173" cy="600" r="2.1"/><circle class="sp sp--core" cx="1069" cy="626" r="2.6"/><circle class="sp sp--core" cx="1095" cy="626" r="2.6"/><circle class="sp sp--core" cx="1121" cy="626" r="2.6"/><circle class="sp" cx="1095" cy="652" r="2.1"/><circle class="sp" cx="1095" cy="678" r="2.1"/></g>
+      </g>
+
+      <!-- the yarn runs the full width; the mask decides where it is visible -->
+      <g class="weave-traces" mask="url(#yarnMask)" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <path class="tr tr--ghost" d="M 100 62 H 500 V 40 H 1440"/>
+        <path class="tr tr--ghost" d="M 100 560 H 300 V 500 H 1440"/>
+        <path class="tr tr--ghost" d="M 100 640 H 620 V 600 H 940 V 656 H 1440"/>
+        <path class="tr tr--dim"   d="M 100 150 H 380 V 106 H 660 V 150 H 1080 V 90 H 1440"/>
+        <path class="tr tr--dim"   d="M 1230 0 V 90 H 1360 V 150 H 1440"/>
+        <path class="tr tr--dim"   d="M 1290 720 V 610 H 1440"/>
+
+        <path class="tr tr--live"   id="trA" d="M 100 246 H 430 V 196 H 780 V 210 H 1140 V 300 H 1290 V 200 H 1440"/>
+        <path class="tr tr--live"   id="trB" d="M 100 402 H 360 V 470 H 700 V 450 H 1080 V 380 H 1230 V 470 H 1440"/>
+        <path class="tr tr--accent" id="trC" d="M 100 318 H 620 V 356 H 900 V 330 H 1360 V 540 H 1440"/>
+      </g>
+
+      <!-- pulses run the same geometry, one short dash travelling -->
+      <g class="weave-pulses" mask="url(#yarnMask)" fill="none" stroke-linejoin="round" stroke-linecap="round">
+        <use class="pulse pulse--1" href="#trA"/>
+        <use class="pulse pulse--2" href="#trB"/>
+        <use class="pulse pulse--3" href="#trC"/>
+      </g>
+
+      <!-- junctions -->
+      <g class="weave-nodes" mask="url(#yarnMask)">
+        <g transform="translate(430 196)"><g class="node" style="--nd:0.75s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
+        <g transform="translate(700 450)"><g class="node" style="--nd:0.85s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
+        <g transform="translate(900 330)"><g class="node node--alt" style="--nd:0.95s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
+        <g transform="translate(1140 300)"><g class="node node--lg" style="--nd:0.9s"><circle class="halo" r="16"/><circle class="core" r="6"/></g></g>
+        <g transform="translate(1290 200)"><g class="node" style="--nd:1.15s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
+        <g transform="translate(1080 380)"><g class="node" style="--nd:1.0s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
+        <g transform="translate(1230 470)"><g class="node node--alt" style="--nd:1.3s"><circle class="halo" r="15"/><circle class="core" r="6"/></g></g>
+        <g transform="translate(1360 540)"><g class="node node--alt node--lg" style="--nd:1.55s"><circle class="halo" r="16"/><circle class="core" r="6"/></g></g>
+        <g transform="translate(1360 150)"><g class="node" style="--nd:1.45s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
+        <g transform="translate(1290 610)"><g class="node" style="--nd:1.7s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
+        <g transform="translate(1080 90)"><g class="node" style="--nd:1.25s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
+      </g>
+    </svg>
+  </div>
+  <div class="hero__inner">
+    <h1 class="hero__title reveal"><em>YarnAI</em>, the AI-native method for shipping better digital products, faster.</h1>
+    <p class="hero__sub reveal" data-d="1">YarnAI is how Loomery teams put senior product, design and engineering judgement in charge of AI agents, end to end, so clients get speed without losing control of what ships.</p>
+    <div class="hero__ctas reveal" data-d="2">
+      <a class="btn btn--primary" href="/get-in-touch">Talk to us about YarnAI</a>
+      <a class="btn btn--ghost-dark" href="#stack">See what's in the stack</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SUB-NAV ========================= -->
+<nav class="subnav" aria-label="On this page">
+  <div class="subnav__inner">
+    <a class="subnav__link" href="#lifecycle">How it works</a>
+    <a class="subnav__link" href="#stack">The stack</a>
+    <a class="subnav__link" href="#warp">Inside Warp</a>
+    <a class="subnav__link" href="#evidence">Proof</a>
+    <a class="subnav__link" href="#engage">Ways to work with us</a>
+  </div>
+</nav>
+
+<!-- ========================= THE GAP ========================= -->
+<section class="section section--inverse" id="gap">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--inverse reveal">The gap</p>
+    <h2 class="section-title reveal" data-d="1">Everyone's using AI. Almost nobody's changed how they work.</h2>
+    <div class="gap-cols">
+      <div class="gap-card reveal" data-d="2">
+        <div class="gap-card__head"><span class="gap-mark gap-mark--bad">✕</span> AI without a method</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--bad">✕</span> AI gains stay stuck with whoever's using it, they never show up in delivery speed.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--bad">✕</span> The plan, the review and the accountability still run on the old operating model.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--bad">✕</span> Nobody senior trusts the output enough to skip the old checks anyway.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--bad">✕</span> More AI tools, but not a faster or safer team.</div>
+      </div>
+      <div class="gap-card gap-card--good reveal" data-d="3">
+        <div class="gap-card__head"><span class="gap-mark gap-mark--good">✓</span> With YarnAI</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--good">✓</span> Warp and Heddle put the same context and skills in front of the whole team, so gains compound.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--good">✓</span> Senior product, design and engineering judgement directs every agent output, end to end.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--good">✓</span> Guardrails and evaluations earn trust before agents get more autonomy.</div>
+        <div class="gap-item"><span class="gap-mark gap-mark--good">✓</span> A team restructured around what agents are good at, with senior makers owning the outcome.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WHERE THE TIME GOES ========================= -->
+<section class="section section--ranked" id="lifecycle">
+  <div class="wrap">
+    <div class="rank-rule reveal"></div>
+    <p class="eyebrow eyebrow--ranked reveal">Across the lifecycle</p>
+    <h2 class="section-title reveal" data-d="1">Where the time goes</h2>
+    <p class="lead reveal" data-d="2">Agents draft at every stage, so every stage tightens. Build and design change most.</p>
+
+    <div class="variant lc" id="cycle" data-step="1">
+      <p class="variant__tag"><b>v7</b> · walkthrough, running on its own</p>
+      <div class="lc__steps" role="group" aria-label="Project timeline, cycling automatically">
+        <button class="lc__step" type="button" data-go="1" aria-current="true">1. A normal project<i class="lc__tick" aria-hidden="true"></i></button>
+        <button class="lc__step" type="button" data-go="2" aria-current="false">2. Agents in discovery<i class="lc__tick" aria-hidden="true"></i></button>
+        <button class="lc__step" type="button" data-go="3" aria-current="false">3. Build collapses<i class="lc__tick" aria-hidden="true"></i></button>
+        <button class="lc__step" type="button" data-go="4" aria-current="false">4. Six weeks back<i class="lc__tick" aria-hidden="true"></i></button>
+      </div>
+      <div class="lbar">
+          <div class="lb lb--early" style="--a:8.87%;--b:6.61%;--c:6.61%;--d:6.61%"><span class="lb__l">Discover</span><span class="lb__a"></span></div>
+          <div class="lb lb--early" style="--a:13.71%;--b:7.26%;--c:7.26%;--d:7.26%"><span class="lb__l">Design</span><span class="lb__a"></span></div>
+          <div class="lb lb--build" style="--a:41.94%;--b:41.94%;--c:11.29%;--d:11.29%"><span class="lb__l">Build</span><span class="lb__a"></span></div>
+          <div class="lb" style="--a:12.1%;--b:12.1%;--c:12.1%;--d:8.47%"><span class="lb__l">Test</span><span class="lb__a"></span></div>
+          <div class="lb" style="--a:9.68%;--b:9.68%;--c:9.68%;--d:7.74%"><span class="lb__l">Ship</span><span class="lb__a"></span></div>
+          <div class="lb" style="--a:10.48%;--b:10.48%;--c:10.48%;--d:8.06%"><span class="lb__l">Learn</span><span class="lb__a"></span></div>
+        <div class="lb lb--gain" style="--a:0%;--b:8.7%;--c:39%;--d:46.69%"><span class="lb__l">Reclaimed</span></div>
+      </div>
+      <p class="lc__cap" id="cycleCap">A normal project. <b>Build is where the calendar goes</b> — everything else waits on it.</p>
+      <div class="ba-readout lc__readout" data-for="cycle">
+        <div class="ba-metric"><div class="ba-metric__value" data-steps="12,11,7,6">12</div><div class="ba-metric__label">weeks, kick-off to live</div></div>
+        <div class="ba-metric ba-metric--saved"><div class="ba-metric__value" data-steps="0,1,5,6">0</div><div class="ba-metric__label">weeks reclaimed</div></div>
+        <div class="ba-metric"><div class="ba-metric__value" data-steps="0,2,3,6" data-suffix="/6">0/6</div><div class="ba-metric__label">stages with agents drafting</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= THE STACK ========================= -->
+<section class="section section--sunk" id="stack">
+  <div class="wrap">
+    <p class="eyebrow reveal">What it is</p>
+    <h2 class="section-title reveal" data-d="1">What we put around the agents</h2>
+    <p class="lead reveal" data-d="2">The agents are Claude Code and Cowork. YarnAI decides what they see, what they can do, and what they're allowed to ship.</p>
+
+    <div class="stack-divider reveal">
+      <span class="stack-divider__label">Bought off the shelf</span>
+      <span class="stack-divider__rule"></span>
+    </div>
+    <div class="stack-runtime reveal">
+      <span class="stack-runtime__tag">The agents</span>
+      <span class="stack-runtime__name">Claude Code · Cowork</span>
+      <span class="stack-runtime__note">The same tools anyone can buy.</span>
+    </div>
+
+    <div class="stack-divider stack-divider--ours reveal">
+      <span class="stack-divider__label">Built by <b>Loomery</b></span>
+      <span class="stack-divider__rule"></span>
+    </div>
+    <div class="stack-grid">
+      <article class="pcard reveal">
+        <div class="media" data-media="warp">
+          <div class="media__placeholder"><b>Warp, in use</b><span>Replace with a screen recording of Warp answering a project question.</span><em>MP4 · GIF · PNG</em></div>
+        </div>
+        <div class="pcard__body">
+          <p class="pcard__name"><img class="pcard__mark" src="images/logo-warp.png" alt="" width="24" height="24">Warp</p>
+          <h3 class="pcard__title">Project memory</h3>
+          <p class="pcard__desc">Every decision, constraint and doc for a project, in one place the agents can read.</p>
+        </div>
+      </article>
+
+      <article class="pcard reveal" data-d="1">
+        <div class="media" data-media="heddle">
+          <div class="media__placeholder"><b>Heddle, in use</b><span>Replace with a screen recording of a skill being picked up on a new project.</span><em>MP4 · GIF · PNG</em></div>
+        </div>
+        <div class="pcard__body">
+          <p class="pcard__name"><img class="pcard__mark" src="images/logo-heddle.png" alt="" width="24" height="24">Heddle</p>
+          <h3 class="pcard__title">Skill library</h3>
+          <p class="pcard__desc">Ways of working we've proven, ready to reuse on the next project.</p>
+        </div>
+      </article>
+
+      <article class="pcard reveal" data-d="2">
+        <div class="media" data-media="bobbin">
+          <div class="media__placeholder"><b>Ask Bobbin, in use</b><span>Replace with a screen recording of someone asking Bobbin a question.</span><em>MP4 · GIF · PNG</em></div>
+        </div>
+        <div class="pcard__body">
+          <p class="pcard__name"><img class="pcard__mark" src="images/logo-bobbin.png" alt="" width="24" height="24">Bobbin</p>
+          <h3 class="pcard__title">Our own agent</h3>
+          <p class="pcard__desc">Answers questions about how Loomery works, so the method holds with any team.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="stack-divider reveal">
+      <span class="stack-divider__label">Alongside the core</span>
+      <span class="stack-divider__rule"></span>
+    </div>
+    <div class="stack-pair">
+      <div class="scard reveal">
+        <h3 class="scard__title">Methodology</h3>
+        <p class="scard__sub">Every team, every project</p>
+        <p class="scard__desc">An owner on every decision, the reasoning shown, and nothing ships unreviewed. Tests and CI gate every agent branch before it earns more autonomy.</p>
+      </div>
+      <div class="scard reveal" data-d="1">
+        <h3 class="scard__title">Accelerators</h3>
+        <p class="scard__sub">Standalone, used on any project</p>
+        <p class="scard__desc">Prompt libraries, architecture scaffolds, test templates and decision frameworks, so no project starts from a blank page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= WARP DEEP DIVE ========================= -->
+<section class="section" id="warp">
+  <div class="wrap">
+    <p class="eyebrow reveal">A deep dive</p>
+    <h2 class="section-title reveal" data-d="1">Warp · the project brain</h2>
+    <p class="lead reveal" data-d="2">A closer look at how Warp turns scattered tools into one shared, working context, kept current automatically.</p>
+    <p style="margin-top:var(--s-4)"><a class="text-link" href="#">See Warp in action →</a></p>
+
+    <div class="cycle">
+      <p class="cycle__label reveal">Ingests from your tools</p>
+      <div class="chips reveal" data-d="1">
+        <span class="chip">Granola</span><span class="chip">GitHub</span><span class="chip">Google Drive</span>
+        <span class="chip">Figma</span><span class="chip">Miro</span><span class="chip">Linear</span><span class="chip">Slack</span>
+      </div>
+      <p class="cycle__connector reveal">context · decisions · what changed since last time ↓</p>
+
+      <p class="cycle__label reveal">A Warp session</p>
+      <div class="media media--wide reveal" data-media="warp-session" data-d="1">
+        <div class="media__placeholder"><b>A real Warp session</b><span>Replace with a screen recording of Warp proposing updates and someone approving them.</span><em>MP4 · GIF · PNG</em></div>
+      </div>
+      <p class="cycle__connector reveal">drafted, never shipped ↓</p>
+
+      <p class="cycle__label reveal">What you get</p>
+      <div class="outputs">
+        <div class="reveal"><div class="output__name">Answers</div><div class="output__note">cross-referenced across every source</div></div>
+        <div class="reveal" data-d="1"><div class="output__name">Code and architecture</div><div class="output__note">decisions grounded in real context</div></div>
+        <div class="reveal" data-d="2"><div class="output__name">Delivery planning</div><div class="output__note">story maps and estimates from Linear</div></div>
+        <div class="reveal" data-d="3"><div class="output__name">Write-backs to your tools</div><div class="output__note">always draft-first, you approve</div></div>
+      </div>
+      <p class="cycle__connector reveal">↺ and back into your tools, every session. Warp stays current as a side-effect of working.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PRINCIPLES ========================= -->
+<section class="section section--sunk" id="principles">
+  <div class="wrap">
+    <p class="eyebrow reveal">Principles</p>
+    <h2 class="section-title reveal" data-d="1">The principles behind YarnAI</h2>
+    <div class="prin-grid">
+      <article class="prin reveal">
+        <span class="prin__n">01</span>
+        <h3 class="prin__title">Judgement directs, AI executes</h3>
+        <p class="prin__body">AI accelerates the first 70% of the work. Craft and judgement own the last 30%, the part a model can't bring.</p>
+        <p class="prin__practice"><b>In practice</b>no agent output merges without a named reviewer</p>
+      </article>
+      <article class="prin reveal" data-d="1">
+        <span class="prin__n">02</span>
+        <h3 class="prin__title">Guardrails before autonomy</h3>
+        <p class="prin__body">Tests, CI and static analysis come before agent freedom. We review the commits, not the summary, and bin mediocre work rather than ship it.</p>
+        <p class="prin__practice"><b>In practice</b>tests, CI and static analysis gate every agent branch</p>
+      </article>
+      <article class="prin reveal" data-d="2">
+        <span class="prin__n">03</span>
+        <h3 class="prin__title">Codify context, don't just prompt</h3>
+        <p class="prin__body">Standards and decisions get written down as machine-readable context, so agents and teammates act on them reliably instead of everyone re-explaining.</p>
+        <p class="prin__practice"><b>In practice</b>decisions land in docs/technical/decisions.md, not a chat</p>
+      </article>
+      <article class="prin reveal" data-d="3">
+        <span class="prin__n">04</span>
+        <h3 class="prin__title">Evidence over vibes</h3>
+        <p class="prin__body">We validate with real evals, not gut feel, treat agents as a genuine trust and security surface, and stay cost-aware about what's earning its keep.</p>
+        <p class="prin__practice"><b>In practice</b>evals run per change, cost tracked per project</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= EVIDENCE ========================= -->
+<section class="section section--ranked" id="evidence">
+  <div class="wrap">
+    <div class="rank-rule reveal"></div>
+    <p class="eyebrow eyebrow--ranked reveal">Evidence</p>
+    <h2 class="section-title reveal" data-d="1">What we've shipped with YarnAI</h2>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="stat__value" data-count-in data-to="10">0</div><div class="stat__label">days to ship something and start learning</div></div>
+      <div class="stat reveal" data-d="1"><div class="stat__value" data-count-in data-to="100">0</div><div class="stat__label">days to a working Alpha in users' hands</div></div>
+    </div>
+
+    <div class="cases">
+      <article class="case reveal">
+        <div class="media" data-media="vorboss"><img src="images/case-vorboss.png" alt="Vorboss channel-partner portal, rebuilt with Loomery" loading="lazy" width="1600" height="1000"></div>
+        <div class="case__body">
+          <p class="case__client">Vorboss</p><p class="case__sector">Utilities</p>
+          <span class="case__metric">3× faster</span>
+          <h3 class="case__title">Kick-off to live in a week</h3>
+          <p class="case__desc">Rebuilt the channel-partner portal with AI-native delivery: a working demo in a day, live product in a week.</p>
+          <div class="case__link"><a class="text-link" href="https://www.loomery.com/vorboss">View the case study →</a></div>
+        </div>
+      </article>
+      <article class="case reveal" data-d="1">
+        <div class="media" data-media="exeter"><img src="images/case-exeter.jpg" alt="University of Exeter campus" loading="lazy" width="1600" height="1000"></div>
+        <div class="case__body">
+          <p class="case__client">University of Exeter</p><p class="case__sector">Higher education</p>
+          <span class="case__metric">60 days saved</span>
+          <h3 class="case__title">Months of build, down to days of setup</h3>
+          <p class="case__desc">A university-wide agent platform on AWS with reusable templates and single sign-on.</p>
+        </div>
+      </article>
+      <article class="case reveal" data-d="2">
+        <div class="media" data-media="bite"><img src="images/case-bite.jpg" alt="Bite Engineering AI orchestration platform" loading="lazy" width="1600" height="1000"></div>
+        <div class="case__body">
+          <p class="case__client">Bite Engineering</p><p class="case__sector">Construction</p>
+          <span class="case__metric">Team 50% smaller</span>
+          <h3 class="case__title">Alpha to revenue-ready in twelve weeks</h3>
+          <p class="case__desc">Rebuilt an AI orchestration platform for structural engineers, taking a rough alpha to revenue-ready software.</p>
+          <div class="case__link"><a class="text-link" href="#">View the case study →</a></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="creds reveal">
+      <div><div class="cred__value">200+</div><div class="cred__label">AI-native specialists</div></div>
+      <div><div class="cred__value">Claude</div><div class="cred__label">Certified Developers</div></div>
+      <div><div class="cred__value">OpenAI</div><div class="cred__label">Consultative Solutions Practitioner</div></div>
+      <div><div class="cred__value">AWS</div><div class="cred__label">Certified Gen AI Developer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= TEAM SHAPE ========================= -->
+<section class="section section--sunk" id="team">
+  <div class="wrap">
+    <p class="eyebrow reveal">The team shape</p>
+    <h2 class="section-title reveal" data-d="1">The team gets smaller. The people get more senior.</h2>
+    <p class="lead reveal" data-d="2">Agents don't replace the team — they absorb the work that used to need more of it. Two senior makers stay in charge, with specialist craft on call.</p>
+    <div class="team-block">
+      <div class="tm-ctrl">
+        <div class="ba-toggle" role="group" aria-label="Compare team shape">
+          <button class="ba-btn" type="button" data-target="teamA" data-state="before" aria-pressed="true">Cross-functional team</button>
+          <button class="ba-btn" type="button" data-target="teamA" data-state="after" aria-pressed="false">With YarnAI</button>
+        </div>
+      </div>
+      <div class="team-row" data-ba id="teamA">
+        <div class="role role--core" style="--delay:0ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Product Engineer</span><span class="role__note">stays, and owns more</span></div>
+        <div class="role role--core" style="--delay:60ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Strategic Designer</span><span class="role__note">stays, and owns more</span></div>
+        <div class="role role--absorbed" style="--delay:120ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Delivery Manager</span><span class="role__note">coordination absorbed</span></div>
+        <div class="role role--absorbed" style="--delay:160ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">BA</span><span class="role__note">synthesis absorbed</span></div>
+        <div class="role role--absorbed" style="--delay:200ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">QA</span><span class="role__note">test drafting absorbed</span></div>
+        <div class="role role--absorbed" style="--delay:240ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">2nd Engineer</span><span class="role__note">throughput absorbed</span></div>
+        <div class="role role--absorbed" style="--delay:280ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Researcher</span><span class="role__note">scanning absorbed</span></div>
+        <div class="role role--agents" style="--delay:340ms"><span class="role__name">Agent fleet · 24/7</span><span class="role__note">drafts, never decides</span></div>
+        <div class="role role--counsel" style="--delay:400ms"><span class="role__name">Product counsel</span><span class="role__note">craft, on call</span></div>
+      </div>
+      <p class="tm-note">People fade back rather than disappear — the work moves to agents, the two makers stay accountable.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================= MATURITY ========================= -->
+<section class="section section--inverse" id="maturity">
+  <div class="wrap">
+    <p class="eyebrow eyebrow--gain reveal">Getting there</p>
+    <h2 class="section-title reveal" data-d="1">Our AI maturity framework</h2>
+    <p class="lead lead--inverse reveal" data-d="2">We use this across Loomery to keep YarnAI embedded as capability grows, whatever stage a team is starting from. We help clients apply it to their own teams.</p>
+    <div class="levels" id="levels">
+      <div class="level"><div class="level__meter"><i style="--fill:25%;--delay:0ms"></i></div><span class="level__n">Level 01</span><span class="level__title">Co-pilot / chat</span><ul class="level__list"><li>Give context each time</li><li>Use for Q&amp;A</li><li>Discrete tasks</li></ul><div class="level__tools">Copilot, Claude · Gemini in Docs</div></div>
+      <div class="level"><div class="level__meter"><i style="--fill:50%;--delay:120ms"></i></div><span class="level__n">Level 02</span><span class="level__title">Repeatable tasks</span><ul class="level__list"><li>Shared, saved context</li><li>Largely Q&amp;A or simple actions</li><li>Discrete tasks</li></ul><div class="level__tools">Gems, Skills, Projects · prompt libraries</div></div>
+      <div class="level"><div class="level__meter"><i style="--fill:75%;--delay:240ms"></i></div><span class="level__n">Level 03</span><span class="level__title">Smart workflows</span><ul class="level__list"><li>Chain of tools with linked context</li><li>Takes actions, not just answers</li><li>Multi-step processes</li></ul><div class="level__tools">Claude Cowork/Code, Codex · Slack, Jira, Figma</div></div>
+      <div class="level"><div class="level__meter"><i style="--fill:100%;--delay:360ms"></i></div><span class="level__n">Level 04</span><span class="level__title">Autonomous agents</span><ul class="level__list"><li>Proactive workflows</li><li>Agents discover tools you didn't specify</li><li>Parallel agents, co-ordinating</li></ul><div class="level__tools">Claude Code, Gemini CLI · inter-agent comms</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= ENGAGE ========================= -->
+<section class="section section--ranked section--sunk" id="engage">
+  <div class="wrap">
+    <div class="rank-rule reveal"></div>
+    <p class="eyebrow eyebrow--ranked reveal">Working with us</p>
+    <h2 class="section-title reveal" data-d="1">How clients engage with YarnAI</h2>
+    <div class="options">
+      <div class="option reveal">
+        <h3 class="option__title">AI-native product pair</h3>
+        <p class="option__desc">A product engineer and a strategic designer join your existing team as a full-time pair, directing AI agents inside your codebase and your organisation.</p>
+        <ul class="option__list"><li><b>✓</b> Directs the agents drafting inside your codebase</li><li><b>✓</b> Brings senior product and design judgement into your team</li><li><b>✓</b> Ships alongside your team, inside your systems</li></ul>
+        <div class="option__best"><b>Best when</b>you've already got the wider team and want the method, not extra headcount.</div>
+        <a class="btn btn--secondary" href="/get-in-touch">Talk to us about a pair →</a>
+      </div>
+      <div class="option reveal" data-d="1">
+        <h3 class="option__title">YarnAI enablement</h3>
+        <p class="option__desc">Loomery sets up YarnAI, the tool stack and the methodology inside your organisation, and trains your team to run it themselves.</p>
+        <ul class="option__list"><li><b>✓</b> Stand up the tool stack, workflows and guardrails</li><li><b>✓</b> Train your team to run YarnAI's method themselves</li><li><b>✓</b> Hand over a repeatable way of working</li></ul>
+        <div class="option__best"><b>Best when</b>the goal is building the capability in-house, not renting it.</div>
+        <a class="btn btn--secondary" href="/get-in-touch">Talk to us about enablement →</a>
+      </div>
+      <div class="option reveal" data-d="2">
+        <h3 class="option__title">Agentic pod</h3>
+        <p class="option__desc">A full Loomery team — product counsel, multiple product pairs and a 24/7 agent fleet — runs YarnAI end to end: strategy, design, build and launch.</p>
+        <ul class="option__list"><li><b>✓</b> End-to-end ownership, strategy through launch</li><li><b>✓</b> Multiple product pairs plus a 24/7 agent fleet</li><li><b>✓</b> Product counsel on call throughout</li></ul>
+        <div class="option__best"><b>Best when</b>you need the whole thing built at pace and don't have the team yet.</div>
+        <a class="btn btn--secondary" href="/get-in-touch">Talk to us about a pod →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= CTA + FOOTER ========================= -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta__title reveal">Ready to build with YarnAI?</h2>
+    <a class="btn btn--primary reveal" data-d="1" href="/get-in-touch">Talk to us about YarnAI</a>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer__inner">
+    <div><div class="footer__label">Find us</div><p>17–21 Emerald St</p><p>London WC1N 3QN</p></div>
+    <div><div class="footer__label">Follow us</div><p><a href="http://www.linkedin.com/company/loomery">LinkedIn</a></p><p><a href="https://twitter.com/loomeryteam">X</a></p></div>
+    <div><div class="footer__label">Newsletter</div><p>Get regular insights and updates straight to your inbox.</p><p style="margin-top:12px"><a class="btn btn--ghost-dark" href="/newsletter" style="font-size:14px;padding:11px 16px">Sign up</a></p></div>
+  </div>
+  <div class="footer__legal"><span>© Loomery Limited — Company No. 12616144</span><a href="/data-protection-policy">Data Protection Policy</a></div>
+</footer>
+
+<script src="motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* ============================================================
+   YarnAI — design tokens
+   Mirrors the `semantic` variable collection in the Figma file.
+   Every value here has a 1:1 counterpart in Figma.
+
+   WEBFLOW: paste this whole file into Project Settings →
+   Custom Code → Head, wrapped in <style>. Webflow reads
+   custom properties fine; you then set colours in the Designer
+   by typing var(--…) into any colour field.
+   ============================================================ */
+
+:root {
+  /* --- surfaces --- */
+  --surface-page:            #ffffff;
+  --surface-sunk:            #f5f5fa;
+  --surface-inverse:         #181825;
+  --surface-inverse-raised:  #252538;
+  --surface-inset:           #14141f;
+  --surface-product-tint:    #efedfd;
+  --surface-gain-tint:       #e7fff8;
+
+  /* --- text --- */
+  --text-primary:            #181825;
+  --text-secondary:          #545472;
+  --text-product:            #5b4ee9;
+  --text-on-inverse:         #ffffff;
+  --text-on-inverse-muted:   #babad7;
+  --text-on-accent:          #181825;
+
+  /* --- state --- */
+  --state-positive:          #3fffc5;
+  --state-negative:          #9e9ebe;
+
+  /* --- borders ---
+     border-subtle is DECORATIVE ONLY (1.41:1).
+     Anything interactive uses border-interactive (3.61:1 on light,
+     4.84:1 on inverse). This rule is from the handover page. */
+  --border-subtle:           #d7d7f1;
+  --border-interactive:      #8484a4;
+  --border-strong:           #181825;
+  --border-on-inverse:       #33334d;
+  --border-product:          #5b4ee9;
+
+  /* --- product --- */
+  --product-500:             #5b4ee9;
+
+  /* --- focus --- */
+  --focus-on-light:          #5b4ee9;
+  --focus-on-dark:           #3fffc5;
+
+  /* --- type ---
+     The Future is the real face; Jost is the documented stand-in
+     and loads from Google Fonts, which Webflow supports natively.
+     Swap the first name in each stack when the licence lands. */
+  --font-sans: "The Future", "Jost", system-ui, -apple-system, sans-serif;
+  --font-mono: "The Future Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  --type-display:   60px;
+  --type-section:   44px;
+  --type-card:      22px;
+  --type-lead:      18px;
+  --type-base:      16px;
+  --type-small:     14px;
+  --type-label:     12px;
+  --type-artefact:  13px;
+
+  /* --- space --- */
+  --s-1:  8px;
+  --s-2:  12px;
+  --s-3:  16px;
+  --s-4:  24px;
+  --s-5:  32px;
+  --s-6:  48px;
+  --s-7:  72px;
+  --s-8:  96px;
+  --s-9:  128px;
+
+  /* --- layout --- */
+  --page-max:   1440px;
+  --gutter:     100px;
+  --content:    1240px;
+
+  /* --- motion ---
+     Durations and easings are kept here so the HTML prototype and
+     the Webflow rebuild can use identical numbers. Webflow IX2 takes
+     duration in seconds and offers "ease out" / custom bezier. */
+  --dur-fast:   220ms;
+  --dur-base:   420ms;
+  --dur-slow:   900ms;
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Square corners. loomery.com carries no radii. */
+* { border-radius: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
