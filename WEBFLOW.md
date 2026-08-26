@@ -14,9 +14,18 @@ lets the browser cache your edits away.
 inside `<style>`. Webflow reads custom properties; in the Designer you type
 `var(--surface-inverse)` into any colour field.
 
-**Fonts.** Jost and IBM Plex Mono load from Google Fonts under
-**Project Settings → Fonts**. When The Future is licensed, upload it there and
-change only the first name in `--font-sans` / `--font-mono`.
+**Fonts.** The prototype loads **The Future** and **The Future Mono** from
+Loomery's own Webflow CDN, declared as `@font-face` at the top of `tokens.css`.
+Jost and IBM Plex Mono remain in the stack as an offline fallback.
+
+**Delete that `@font-face` block when you build in Webflow** — the fonts are
+already uploaded under Project Settings → Fonts, and a second declaration
+pointing at raw CDN URLs will only fight it.
+
+One gotcha: The Future has no 600 weight. The bold face is declared across the
+`600 700` range so the page's `font-weight: 600` headings resolve to it rather
+than to a synthesised bold. In Webflow, set headings to **Bold (700)** — a 600
+in the Designer will render as faux-bold.
 
 **Reduced motion.** Webflow does **not** respect `prefers-reduced-motion` by
 default. The media query at the bottom of `tokens.css` handles it — keep it.

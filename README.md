@@ -39,9 +39,11 @@ looks exactly like the animations being broken.
 - **Four media placeholders need real recordings** — Warp, Heddle, Bobbin and
   the Warp session. Each is a dashed box saying what belongs there. See
   `WEBFLOW.md` §5.
-- **The Future font isn't loaded.** Jost is standing in everywhere. Swap the
-  first name in `--font-sans` / `--font-mono` in `tokens.css` once it's
-  licensed.
+- **The Future loads from Loomery's Webflow CDN**, declared as `@font-face` at
+  the top of `tokens.css`. The files are licensed, so they are referenced
+  rather than committed. Jost and IBM Plex Mono stay in the stack as an
+  offline fallback. In Webflow this block isn't needed — the fonts are already
+  uploaded under Project Settings → Fonts.
 - **The sticky sub-nav sits at `top: 0`.** If the main Loomery nav is also
   sticky, one of them has to give. Decide before build.
 - **Mobile hasn't had a pass.** Breakpoints exist and the layout holds, but it

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YarnAI — Loomery's AI-native method</title>
 <meta name="description" content="YarnAI is how Loomery puts senior product, design and engineering judgement in charge of AI agents, end to end.">
+<link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -28,7 +29,7 @@
       <defs>
         <!-- the field: a dot lattice, the same language as the product marks -->
         <pattern id="dots" width="30" height="30" patternUnits="userSpaceOnUse">
-          <circle cx="15" cy="15" r="1.6" fill="#ffffff"/>
+          <circle cx="15" cy="15" r="3" fill="#ffffff"/>
         </pattern>
         <linearGradient id="fadeDots" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0.00" stop-color="#3a3a3a"/>
@@ -52,48 +53,35 @@
         <mask id="yarnMask"><rect width="1440" height="720" fill="url(#fadeYarn)"/></mask>
       </defs>
 
-      <rect width="1440" height="720" fill="url(#dots)" mask="url(#dotMask)" opacity="0.30"/>
+      <rect width="1440" height="720" fill="url(#dots)" mask="url(#dotMask)" opacity="0.22"/>
 
       <!-- lattice-aligned sparkles: lit dots in the same grid -->
       <g class="weave-sparks" mask="url(#dotMask)">
-        <g class="spark" style="--sd:1.5s"><circle class="sp" cx="1095" cy="522" r="2.1"/><circle class="sp" cx="1095" cy="548" r="2.1"/><circle class="sp sp--core" cx="1069" cy="574" r="2.6"/><circle class="sp sp--core" cx="1095" cy="574" r="2.6"/><circle class="sp sp--core" cx="1121" cy="574" r="2.6"/><circle class="sp" cx="1017" cy="600" r="2.1"/><circle class="sp" cx="1043" cy="600" r="2.1"/><circle class="sp sp--core" cx="1069" cy="600" r="2.6"/><circle class="sp sp--core" cx="1095" cy="600" r="2.6"/><circle class="sp sp--core" cx="1121" cy="600" r="2.6"/><circle class="sp" cx="1147" cy="600" r="2.1"/><circle class="sp" cx="1173" cy="600" r="2.1"/><circle class="sp sp--core" cx="1069" cy="626" r="2.6"/><circle class="sp sp--core" cx="1095" cy="626" r="2.6"/><circle class="sp sp--core" cx="1121" cy="626" r="2.6"/><circle class="sp" cx="1095" cy="652" r="2.1"/><circle class="sp" cx="1095" cy="678" r="2.1"/></g>
+        <g class="spark" style="--sd:1.5s"><circle class="sp" cx="1095" cy="495" r="3.4"/><circle class="sp" cx="1095" cy="525" r="3.4"/><circle class="sp sp--core" cx="1065" cy="555" r="3.4"/><circle class="sp sp--core" cx="1095" cy="555" r="3.4"/><circle class="sp sp--core" cx="1125" cy="555" r="3.4"/><circle class="sp" cx="1005" cy="585" r="3.4"/><circle class="sp" cx="1035" cy="585" r="3.4"/><circle class="sp sp--core" cx="1065" cy="585" r="3.4"/><circle class="sp sp--core" cx="1095" cy="585" r="3.4"/><circle class="sp sp--core" cx="1125" cy="585" r="3.4"/><circle class="sp" cx="1155" cy="585" r="3.4"/><circle class="sp" cx="1185" cy="585" r="3.4"/><circle class="sp sp--core" cx="1065" cy="615" r="3.4"/><circle class="sp sp--core" cx="1095" cy="615" r="3.4"/><circle class="sp sp--core" cx="1125" cy="615" r="3.4"/><circle class="sp" cx="1095" cy="645" r="3.4"/><circle class="sp" cx="1095" cy="675" r="3.4"/></g>
       </g>
 
-      <!-- the yarn runs the full width; the mask decides where it is visible -->
+      <!-- the yarn is lit dots on the same 30px lattice as the Bobbin mark;
+           the mask decides where it is visible -->
       <g class="weave-traces" mask="url(#yarnMask)" fill="none" stroke-linejoin="round" stroke-linecap="round">
-        <path class="tr tr--ghost" d="M 100 62 H 500 V 40 H 1440"/>
-        <path class="tr tr--ghost" d="M 100 560 H 300 V 500 H 1440"/>
-        <path class="tr tr--ghost" d="M 100 640 H 620 V 600 H 940 V 656 H 1440"/>
-        <path class="tr tr--dim"   d="M 100 150 H 380 V 106 H 660 V 150 H 1080 V 90 H 1440"/>
-        <path class="tr tr--dim"   d="M 1230 0 V 90 H 1360 V 150 H 1440"/>
-        <path class="tr tr--dim"   d="M 1290 720 V 610 H 1440"/>
+        <path class="tr tr--ghost" d="M 105 75 H 495 V 45 H 1455"/>
+        <path class="tr tr--ghost" d="M 105 555 H 315 V 495 H 1455"/>
+        <path class="tr tr--ghost" d="M 105 645 H 615 V 615 H 945 V 645 H 1455"/>
+        <path class="tr tr--dim"   d="M 105 135 H 375 V 105 H 675 V 135 H 1095 V 75 H 1455"/>
+        <path class="tr tr--dim"   d="M 1215 15 V 75 H 1365 V 135 H 1455"/>
+        <path class="tr tr--dim"   d="M 1275 735 V 615 H 1455"/>
 
-        <path class="tr tr--live"   id="trA" d="M 100 246 H 430 V 196 H 780 V 210 H 1140 V 300 H 1290 V 200 H 1440"/>
-        <path class="tr tr--live"   id="trB" d="M 100 402 H 360 V 470 H 700 V 450 H 1080 V 380 H 1230 V 470 H 1440"/>
-        <path class="tr tr--accent" id="trC" d="M 100 318 H 620 V 356 H 900 V 330 H 1360 V 540 H 1440"/>
+        <path class="tr tr--live"   id="trA" d="M 105 255 H 435 V 195 H 1155 V 315 H 1275 V 195 H 1455"/>
+        <path class="tr tr--live"   id="trB" d="M 105 405 H 375 V 465 H 705 V 435 H 1095 V 375 H 1215 V 465 H 1455"/>
+        <path class="tr tr--accent" id="trC" d="M 105 315 H 615 V 345 H 915 V 315 H 1365 V 555 H 1455"/>
       </g>
 
-      <!-- pulses run the same geometry, one short dash travelling -->
+      <!-- signal: a cluster of three brighter dots travelling the same route -->
       <g class="weave-pulses" mask="url(#yarnMask)" fill="none" stroke-linejoin="round" stroke-linecap="round">
         <use class="pulse pulse--1" href="#trA"/>
         <use class="pulse pulse--2" href="#trB"/>
         <use class="pulse pulse--3" href="#trC"/>
       </g>
 
-      <!-- junctions -->
-      <g class="weave-nodes" mask="url(#yarnMask)">
-        <g transform="translate(430 196)"><g class="node" style="--nd:0.75s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
-        <g transform="translate(700 450)"><g class="node" style="--nd:0.85s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
-        <g transform="translate(900 330)"><g class="node node--alt" style="--nd:0.95s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
-        <g transform="translate(1140 300)"><g class="node node--lg" style="--nd:0.9s"><circle class="halo" r="16"/><circle class="core" r="6"/></g></g>
-        <g transform="translate(1290 200)"><g class="node" style="--nd:1.15s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
-        <g transform="translate(1080 380)"><g class="node" style="--nd:1.0s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
-        <g transform="translate(1230 470)"><g class="node node--alt" style="--nd:1.3s"><circle class="halo" r="15"/><circle class="core" r="6"/></g></g>
-        <g transform="translate(1360 540)"><g class="node node--alt node--lg" style="--nd:1.55s"><circle class="halo" r="16"/><circle class="core" r="6"/></g></g>
-        <g transform="translate(1360 150)"><g class="node" style="--nd:1.45s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
-        <g transform="translate(1290 610)"><g class="node" style="--nd:1.7s"><circle class="halo" r="13"/><circle class="core" r="5"/></g></g>
-        <g transform="translate(1080 90)"><g class="node" style="--nd:1.25s"><circle class="halo" r="12"/><circle class="core" r="4.5"/></g></g>
-      </g>
     </svg>
   </div>
   <div class="hero__inner">
@@ -150,14 +138,16 @@
     <p class="lead reveal" data-d="2">Agents draft at every stage, so every stage tightens. Build and design change most.</p>
 
     <div class="variant lc" id="cycle" data-step="1">
-      <p class="variant__tag"><b>v7</b> · walkthrough, running on its own</p>
       <div class="lc__steps" role="group" aria-label="Project timeline, cycling automatically">
         <button class="lc__step" type="button" data-go="1" aria-current="true">1. A normal project<i class="lc__tick" aria-hidden="true"></i></button>
         <button class="lc__step" type="button" data-go="2" aria-current="false">2. Agents in discovery<i class="lc__tick" aria-hidden="true"></i></button>
         <button class="lc__step" type="button" data-go="3" aria-current="false">3. Build collapses<i class="lc__tick" aria-hidden="true"></i></button>
         <button class="lc__step" type="button" data-go="4" aria-current="false">4. Six weeks back<i class="lc__tick" aria-hidden="true"></i></button>
       </div>
-      <div class="lbar">
+      <div class="lbar-wrap">
+        <p class="lref__label">A normal project</p>
+        <div class="lref" aria-hidden="true"><span class="lref__b" style="width:8.87%"></span><span class="lref__b" style="width:13.71%"></span><span class="lref__b" style="width:41.94%"></span><span class="lref__b" style="width:12.1%"></span><span class="lref__b" style="width:9.68%"></span><span class="lref__b" style="width:10.48%"></span></div>
+        <div class="lbar">
           <div class="lb lb--early" style="--a:8.87%;--b:6.61%;--c:6.61%;--d:6.61%"><span class="lb__l">Discover</span><span class="lb__a"></span></div>
           <div class="lb lb--early" style="--a:13.71%;--b:7.26%;--c:7.26%;--d:7.26%"><span class="lb__l">Design</span><span class="lb__a"></span></div>
           <div class="lb lb--build" style="--a:41.94%;--b:41.94%;--c:11.29%;--d:11.29%"><span class="lb__l">Build</span><span class="lb__a"></span></div>
@@ -165,6 +155,7 @@
           <div class="lb" style="--a:9.68%;--b:9.68%;--c:9.68%;--d:7.74%"><span class="lb__l">Ship</span><span class="lb__a"></span></div>
           <div class="lb" style="--a:10.48%;--b:10.48%;--c:10.48%;--d:8.06%"><span class="lb__l">Learn</span><span class="lb__a"></span></div>
         <div class="lb lb--gain" style="--a:0%;--b:8.7%;--c:39%;--d:46.69%"><span class="lb__l">Reclaimed</span></div>
+        </div>
       </div>
       <p class="lc__cap" id="cycleCap">A normal project. <b>Build is where the calendar goes</b> — everything else waits on it.</p>
       <div class="ba-readout lc__readout" data-for="cycle">
@@ -188,49 +179,66 @@
       <span class="stack-divider__label">Bought off the shelf</span>
       <span class="stack-divider__rule"></span>
     </div>
-    <div class="stack-runtime reveal">
-      <span class="stack-runtime__tag">The agents</span>
-      <span class="stack-runtime__name">Claude Code · Cowork</span>
-      <span class="stack-runtime__note">The same tools anyone can buy.</span>
+    <div class="agents reveal">
+      <div class="agents__brand">
+        <span class="agents__plate"><img src="images/logo-claude.png" alt="Claude" width="1280" height="275"></span>
+        <span class="agents__note">The same tools anyone can buy.</span>
+      </div>
+      <div class="agents__list">
+        <div class="agent">
+          <span class="agent__name">Claude Code</span>
+          <span class="agent__role">Writes, refactors and tests in the codebase</span>
+        </div>
+        <div class="agent">
+          <span class="agent__name">Cowork</span>
+          <span class="agent__role">Drafts and researches alongside the team</span>
+        </div>
+      </div>
     </div>
 
     <div class="stack-divider stack-divider--ours reveal">
       <span class="stack-divider__label">Built by <b>Loomery</b></span>
       <span class="stack-divider__rule"></span>
     </div>
-    <div class="stack-grid">
-      <article class="pcard reveal">
-        <div class="media" data-media="warp">
-          <div class="media__placeholder"><b>Warp, in use</b><span>Replace with a screen recording of Warp answering a project question.</span><em>MP4 · GIF · PNG</em></div>
+    <div class="pscroll" id="pscroll" data-product="warp">
+      <div class="pscroll__steps">
+        <article class="pstep" data-product="warp" data-first>
+          <p class="pstep__name"><img class="pstep__mark" src="images/logo-warp.png" alt="" width="26" height="26">Warp</p>
+          <h3 class="pstep__title">Project memory</h3>
+          <p class="pstep__desc">Every decision, constraint and doc for a project, in one place the agents can read.</p>
+        </article>
+        <article class="pstep" data-product="heddle">
+          <p class="pstep__name"><img class="pstep__mark" src="images/logo-heddle.png" alt="" width="26" height="26">Heddle</p>
+          <h3 class="pstep__title">Skill library</h3>
+          <p class="pstep__desc">Ways of working we've proven, ready to reuse on the next project.</p>
+        </article>
+        <article class="pstep" data-product="bobbin">
+          <p class="pstep__name"><img class="pstep__mark" src="images/logo-bobbin.png" alt="" width="26" height="26">Bobbin</p>
+          <h3 class="pstep__title">Our own agent</h3>
+          <p class="pstep__desc">Answers questions about how Loomery works, so the method holds with any team.</p>
+        </article>
+      </div>
+      <div class="pscroll__stage">
+        <div class="pscroll__sticky">
+          <div class="pscroll__frame">
+        <div class="ppane" data-product="warp" data-on>
+          <div class="media" data-media="warp">
+            <div class="media__placeholder"><b>Warp, in use</b><span>Replace with a screen recording of Warp answering a project question.</span><em>MP4 · GIF · PNG</em></div>
+          </div>
         </div>
-        <div class="pcard__body">
-          <p class="pcard__name"><img class="pcard__mark" src="images/logo-warp.png" alt="" width="24" height="24">Warp</p>
-          <h3 class="pcard__title">Project memory</h3>
-          <p class="pcard__desc">Every decision, constraint and doc for a project, in one place the agents can read.</p>
+        <div class="ppane" data-product="heddle">
+          <div class="media" data-media="heddle">
+            <div class="media__placeholder"><b>Heddle, in use</b><span>Replace with a screen recording of a skill being picked up on a new project.</span><em>MP4 · GIF · PNG</em></div>
+          </div>
         </div>
-      </article>
-
-      <article class="pcard reveal" data-d="1">
-        <div class="media" data-media="heddle">
-          <div class="media__placeholder"><b>Heddle, in use</b><span>Replace with a screen recording of a skill being picked up on a new project.</span><em>MP4 · GIF · PNG</em></div>
+        <div class="ppane" data-product="bobbin">
+          <div class="media" data-media="bobbin">
+            <div class="media__placeholder"><b>Ask Bobbin, in use</b><span>Replace with a screen recording of someone asking Bobbin a question.</span><em>MP4 · GIF · PNG</em></div>
+          </div>
         </div>
-        <div class="pcard__body">
-          <p class="pcard__name"><img class="pcard__mark" src="images/logo-heddle.png" alt="" width="24" height="24">Heddle</p>
-          <h3 class="pcard__title">Skill library</h3>
-          <p class="pcard__desc">Ways of working we've proven, ready to reuse on the next project.</p>
+          </div>
         </div>
-      </article>
-
-      <article class="pcard reveal" data-d="2">
-        <div class="media" data-media="bobbin">
-          <div class="media__placeholder"><b>Ask Bobbin, in use</b><span>Replace with a screen recording of someone asking Bobbin a question.</span><em>MP4 · GIF · PNG</em></div>
-        </div>
-        <div class="pcard__body">
-          <p class="pcard__name"><img class="pcard__mark" src="images/logo-bobbin.png" alt="" width="24" height="24">Bobbin</p>
-          <h3 class="pcard__title">Our own agent</h3>
-          <p class="pcard__desc">Answers questions about how Loomery works, so the method holds with any team.</p>
-        </div>
-      </article>
+      </div>
     </div>
 
     <div class="stack-divider reveal">
@@ -366,9 +374,9 @@
 
     <div class="creds reveal">
       <div><div class="cred__value">200+</div><div class="cred__label">AI-native specialists</div></div>
-      <div><div class="cred__value">Claude</div><div class="cred__label">Certified Developers</div></div>
-      <div><div class="cred__value">OpenAI</div><div class="cred__label">Consultative Solutions Practitioner</div></div>
-      <div><div class="cred__value">AWS</div><div class="cred__label">Certified Gen AI Developer</div></div>
+      <div><div class="cred__value cred__value--logo"><img src="images/logo-claude.png" alt="Claude" width="1280" height="275" loading="lazy"></div><div class="cred__label">Certified Developers</div></div>
+      <div><div class="cred__value cred__value--logo"><img src="images/logo-openai.svg" alt="OpenAI" width="200" height="54" loading="lazy"></div><div class="cred__label">Consultative Solutions Practitioner</div></div>
+      <div><div class="cred__value cred__value--logo"><img src="images/logo-aws.png" alt="AWS" width="960" height="575" loading="lazy"></div><div class="cred__label">Certified Gen AI Developer</div></div>
     </div>
   </div>
 </section>
@@ -394,8 +402,8 @@
         <div class="role role--absorbed" style="--delay:200ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">QA</span><span class="role__note">test drafting absorbed</span></div>
         <div class="role role--absorbed" style="--delay:240ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">2nd Engineer</span><span class="role__note">throughput absorbed</span></div>
         <div class="role role--absorbed" style="--delay:280ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Researcher</span><span class="role__note">scanning absorbed</span></div>
-        <div class="role role--agents" style="--delay:340ms"><span class="role__name">Agent fleet · 24/7</span><span class="role__note">drafts, never decides</span></div>
-        <div class="role role--counsel" style="--delay:400ms"><span class="role__name">Product counsel</span><span class="role__note">craft, on call</span></div>
+        <div class="role role--agents" style="--delay:340ms"><span class="role__tag">Added</span><span class="role__name">Agent fleet · 24/7</span><span class="role__note">drafts, never decides</span></div>
+        <div class="role role--counsel" style="--delay:400ms"><span class="role__tag">On call</span><span class="role__name">Product counsel</span><span class="role__note">specialist craft, brought in</span></div>
       </div>
       <p class="tm-note">People fade back rather than disappear — the work moves to agents, the two makers stay accountable.</p>
     </div>
@@ -410,10 +418,10 @@
     <h2 class="section-title reveal" data-d="1">Our AI maturity framework</h2>
     <p class="lead lead--inverse reveal" data-d="2">We use this across Loomery to keep YarnAI embedded as capability grows, whatever stage a team is starting from. We help clients apply it to their own teams.</p>
     <div class="levels" id="levels">
-      <div class="level"><div class="level__meter"><i style="--fill:25%;--delay:0ms"></i></div><span class="level__n">Level 01</span><span class="level__title">Co-pilot / chat</span><ul class="level__list"><li>Give context each time</li><li>Use for Q&amp;A</li><li>Discrete tasks</li></ul><div class="level__tools">Copilot, Claude · Gemini in Docs</div></div>
-      <div class="level"><div class="level__meter"><i style="--fill:50%;--delay:120ms"></i></div><span class="level__n">Level 02</span><span class="level__title">Repeatable tasks</span><ul class="level__list"><li>Shared, saved context</li><li>Largely Q&amp;A or simple actions</li><li>Discrete tasks</li></ul><div class="level__tools">Gems, Skills, Projects · prompt libraries</div></div>
-      <div class="level"><div class="level__meter"><i style="--fill:75%;--delay:240ms"></i></div><span class="level__n">Level 03</span><span class="level__title">Smart workflows</span><ul class="level__list"><li>Chain of tools with linked context</li><li>Takes actions, not just answers</li><li>Multi-step processes</li></ul><div class="level__tools">Claude Cowork/Code, Codex · Slack, Jira, Figma</div></div>
-      <div class="level"><div class="level__meter"><i style="--fill:100%;--delay:360ms"></i></div><span class="level__n">Level 04</span><span class="level__title">Autonomous agents</span><ul class="level__list"><li>Proactive workflows</li><li>Agents discover tools you didn't specify</li><li>Parallel agents, co-ordinating</li></ul><div class="level__tools">Claude Code, Gemini CLI · inter-agent comms</div></div>
+      <div class="level" data-lvl="1"><div class="lvl__grid" role="img" aria-label="one exchange at a time"><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d" style="--dd:0ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i></div><span class="level__n">Level 01</span><span class="level__title">Co-pilot / chat</span><ul class="level__list"><li>Give context each time</li><li>Use for Q&amp;A</li><li>Discrete tasks</li></ul><div class="level__tools">Copilot, Claude · Gemini in Docs</div></div>
+      <div class="level" data-lvl="2"><div class="lvl__grid" role="img" aria-label="the same exchange, saved and repeated"><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d" style="--dd:0ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i></div><span class="level__n">Level 02</span><span class="level__title">Repeatable tasks</span><ul class="level__list"><li>Shared, saved context</li><li>Largely Q&amp;A or simple actions</li><li>Discrete tasks</li></ul><div class="level__tools">Gems, Skills, Projects · prompt libraries</div></div>
+      <div class="level" data-lvl="3"><div class="lvl__grid" role="img" aria-label="tools chained into one path"><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d lvl__d--on" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:0ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d lvl__d--on" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d lvl__d--on" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d" style="--dd:220ms"></i></div><span class="level__n">Level 03</span><span class="level__title">Smart workflows</span><ul class="level__list"><li>Chain of tools with linked context</li><li>Takes actions, not just answers</li><li>Multi-step processes</li></ul><div class="level__tools">Claude Cowork/Code, Codex · Slack, Jira, Figma</div></div>
+      <div class="level" data-lvl="4"><div class="lvl__grid" role="img" aria-label="many running at once"><i class="lvl__d lvl__d--on" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:0ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:55ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:220ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:110ms"></i><i class="lvl__d" style="--dd:165ms"></i><i class="lvl__d lvl__d--on" style="--dd:220ms"></i></div><span class="level__n">Level 04</span><span class="level__title">Autonomous agents</span><ul class="level__list"><li>Proactive workflows</li><li>Agents discover tools you didn't specify</li><li>Parallel agents, co-ordinating</li></ul><div class="level__tools">Claude Code, Gemini CLI · inter-agent comms</div></div>
     </div>
   </div>
 </section>

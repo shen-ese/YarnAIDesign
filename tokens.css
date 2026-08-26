@@ -9,6 +9,34 @@
    by typing var(--…) into any colour field.
    ============================================================ */
 
+/* ============================================================
+   THE FUTURE — served from Loomery's own Webflow CDN.
+   Referenced rather than committed: the files are licensed, this
+   repo is public, and Webflow already serves them for the live
+   site. In Webflow itself these are uploaded under Project
+   Settings → Fonts, so this block is not needed there.
+
+   The Future has no 600. The bold face is declared across the
+   600–700 range so the page's `font-weight: 600` headings
+   resolve to it rather than falling back to a synthesised bold.
+   ============================================================ */
+@font-face {
+  font-family: "The Future"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c6f7b8627595515dd_the-future-regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "The Future"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c8d5fc3a693e0c1f4_the-future-medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "The Future"; font-style: normal; font-weight: 600 700; font-display: swap;
+  src: url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793cd205f1234adef23b_the-future-bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "The Future Mono"; font-style: normal; font-weight: 400 500; font-display: swap;
+  src: url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c0504ee3a8f2b67f9_the-future-mono-regular.woff2") format("woff2");
+}
+
 :root {
   /* --- surfaces --- */
   --surface-page:            #ffffff;
