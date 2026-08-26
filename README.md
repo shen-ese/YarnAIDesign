@@ -11,12 +11,12 @@ dependencies.
 ## Run it
 
 ```bash
-python3 serve.py
+python3 dev/serve.py
 ```
 
 Then open http://localhost:8777.
 
-`serve.py` is a plain static server that sends `no-store` on everything. Use it
+`dev/serve.py` is a plain static server that sends `no-store` on everything. Use it
 rather than `python3 -m http.server` — the browser will otherwise cache
 `index.html` / `styles.css` / `motion.js` and edits silently won't appear, which
 looks exactly like the animations being broken.
@@ -29,7 +29,7 @@ looks exactly like the animations being broken.
 | `styles.css` | All styling, including the animation timings |
 | `tokens.css` | Design tokens, mirroring the Figma `semantic` collection |
 | `motion.js` | Stands in for Webflow IX2 in this prototype |
-| `serve.py` | No-cache dev server |
+| `dev/serve.py` | No-cache dev server |
 | `WEBFLOW.md` | **Read this before rebuilding.** Section inventory, IX2 recipes, and the decisions that aren't obvious from the code |
 | `docs/screens/` | Reference screenshots |
 | `images/` | Case-study stills and product marks |

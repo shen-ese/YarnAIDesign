@@ -3,7 +3,8 @@
 Everything here is limited to what Webflow can do natively. No animation
 library. Two small custom-code embeds, both optional.
 
-Run locally: `cd ~/Desktop/yarnai-page && python3 -m http.server 8777`
+Run locally: `python3 dev/serve.py` — not `python3 -m http.server`, which
+lets the browser cache your edits away.
 
 ---
 
