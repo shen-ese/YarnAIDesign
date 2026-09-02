@@ -279,23 +279,6 @@ a { color: inherit; }
 .stack-runtime__note { font-size: var(--type-small); color: var(--text-on-inverse-muted); }
 
 /* ============================================================
-   OFF THE SHELF — the bought half, with something to look at
-   ============================================================ */
-.agents { display: grid; grid-template-columns: minmax(240px, 0.8fr) 1.2fr; gap: var(--s-6);
-  background: var(--surface-inverse); color: var(--text-on-inverse); padding: var(--s-5); align-items: center; }
-.agents__brand { display: flex; align-items: center; }
-/* the wordmark ships black; reversed out it reads on the inverse panel */
-.agents__plate { display: inline-flex; align-self: flex-start; }
-.agents__plate img { width: auto; height: 32px; max-width: 180px; object-fit: contain;
-  display: block; filter: brightness(0) invert(1); }
-.agents__note { font-size: var(--type-small); color: var(--text-on-inverse-muted); }
-.agents__list { display: flex; gap: var(--s-6); flex-wrap: wrap; align-items: center; }
-.agent { border-left: 2px solid var(--state-positive); padding-left: var(--s-3); }
-.agent__name { font-size: var(--type-base); font-weight: 600; }
-.agent__role { font-size: var(--type-small); color: var(--text-on-inverse-muted); }
-@media (max-width: 900px) { .agents, .agents__list { grid-template-columns: 1fr; } }
-
-/* ============================================================
    BUILT BY LOOMERY — stacked, media follows what you are reading
    The stage is sticky; each step claims it as it reaches the middle
    of the viewport. In Webflow: one "scroll into view" trigger per
@@ -340,9 +323,6 @@ a { color: inherit; }
 .stack-divider { margin: var(--s-7) 0 var(--s-4); display: flex; align-items: center; gap: var(--s-3); }
 .stack-divider__label { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.02em; color: var(--text-secondary); white-space: nowrap; }
 .stack-divider__rule { height: 1px; background: var(--border-subtle); flex: 1; }
-.stack-divider__label b { color: var(--text-product); font-weight: 500; }
-.stack-divider--ours .stack-divider__label { color: var(--text-primary); }
-.stack-divider--ours .stack-divider__rule { background: var(--text-product); opacity: 0.35; }
 .stack-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
 .scard { background: var(--surface-page); border: 1px solid var(--border-subtle); padding: var(--s-5); }
 .scard__title { font-size: var(--type-card); font-weight: 600; margin: 0 0 4px; }
