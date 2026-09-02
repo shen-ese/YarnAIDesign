@@ -16,13 +16,13 @@ the matching `images/product-*.png`.
 
 ## The Warp session GIF — `images/warp-session.gif`
 
-`gen_session.py` writes `session.html`: all 48 animation frames laid out in a
+`gen_session.py` writes `session.html`: all 58 animation frames laid out in a
 **3-wide grid**, so one screenshot captures the whole sequence rather than one
 per frame. It writes `session.grid` alongside it with `W,H,cols,rows,count`.
 
 Do not go back to a single tall column: Chrome's full-page screenshot drifts
 vertically past roughly 20,000px, and the late frames come out offset. The grid
-keeps both dimensions modest (4200 x 9792).
+keeps both dimensions modest (4200 x 12240).
 
 ```bash
 python3 gen_session.py     # writes session.html, session.durations, session.grid

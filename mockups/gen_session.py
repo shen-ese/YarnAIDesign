@@ -9,7 +9,7 @@ import os
 
 W, H = 1400, 612
 COLS = 3            # frames laid out in a grid, not one tall column
-QUERY = "Group Steering Committee — Q3 Review"
+QUERY = "What was the summary from the Group Steering Committee?"
 REPLY = ("<b>Granola note — Group-level check-in.</b> Kaine confirmed Phase 1 budget is on "
          "track; Ashford flagged interest in Hive OS as a template for Umbrella "
          "Pharmaceuticals’ and Consumer Health’s own legacy plant-ops systems, contingent "
