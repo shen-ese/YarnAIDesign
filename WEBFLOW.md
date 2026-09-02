@@ -148,28 +148,20 @@ Everything else is native.
 
 ---
 
-## 5 · Media placeholders
+## 5 · Media
 
-Six slots are marked `data-media="…"`, each with a dashed placeholder telling you
-what belongs there:
+The three product images in the Built by Loomery section are **mockups**, not
+real screenshots: `images/product-warp.png`, `product-heddle.png`,
+`product-bobbin.png`. They are rendered from HTML in `mockups/`, so they can be
+edited and re-rendered rather than redrawn — see `mockups/README.md`.
 
-| Slot | What goes in |
-|---|---|
-| `warp` | Warp answering a project question |
-| `heddle` | A skill being picked up on a new project |
-| `bobbin` | Someone asking Bobbin a question |
-| `warp-session` | Warp proposing updates and someone approving them |
-| `vorboss` / `exeter` / `bite` | Case study stills or clips |
-
-To fill one, delete the `.media__placeholder` div and drop in
-`<video autoplay muted loop playsinline>`, an `<img>`, or a GIF. The `.media`
-box already sets `object-fit: cover` and a 16:10 ratio (16:7 for the wide one),
-so nothing needs resizing first.
+Swap them for real screen recordings when those exist. The `.media` box already
+sets `object-fit: cover` and a 16:10 ratio, so nothing needs resizing first.
 
 **If you use video:** always `muted` + `playsinline` or iOS won't autoplay, and
 add a `poster` so there's something to look at before it loads.
 
----
+One still outstanding: the `warp-session` slot in the Warp deep dive.
 
 ## 6 · Gotchas
 

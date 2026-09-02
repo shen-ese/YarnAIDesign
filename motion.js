@@ -173,3 +173,39 @@
              'Two senior makers own the outcome. Agents draft, and specialist craft comes in when it is needed.']
   });
 })();
+
+/* ============================================================
+   BUILT BY LOOMERY — the stage follows what you are reading
+   A thin band across the middle of the viewport decides which
+   product is active; whichever step is crossing it wins.
+   ============================================================ */
+(function () {
+  var scroll = document.getElementById('pscroll');
+  if (!scroll) return;
+
+  var steps = scroll.querySelectorAll('.pstep');
+  var panes = scroll.querySelectorAll('.ppane');
+  if (!steps.length) return;
+
+  function activate(key) {
+    if (scroll.dataset.product === key) return;
+    scroll.dataset.product = key;
+    Array.prototype.forEach.call(panes, function (p) {
+      if (p.dataset.product === key) p.setAttribute('data-on', '');
+      else p.removeAttribute('data-on');
+    });
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    scroll.setAttribute('data-static', '');
+    return;
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) activate(e.target.dataset.product);
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  Array.prototype.forEach.call(steps, function (s) { io.observe(s); });
+})();

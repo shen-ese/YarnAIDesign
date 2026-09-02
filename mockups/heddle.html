@@ -1,0 +1,89 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="_base.css">
+<style>
+body{padding:48px;background:#e9e9f2}
+.app{height:100%;background:#fff;border:1px solid #dcdce8;border-radius:14px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(24,24,37,.10);display:grid;grid-template-columns:280px 400px 1fr}
+.bar{grid-column:1/-1;height:60px;border-bottom:1px solid #ececf4;display:flex;align-items:center;
+  gap:12px;padding:0 22px;background:#fafaff}
+.dot{width:15px;height:15px;border-radius:50%}
+.side{border-right:1px solid #ececf4;padding:22px 16px;background:#fafaff}
+.side h3{font-size:17px;color:#8484a4;font-weight:500;margin:0 8px 16px}
+.cat{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:8px;font-size:21px;color:#545472}
+.cat.on{background:#eae8fd;color:#5b4ee9;font-weight:600}
+.cat i{width:16px;height:16px;border:2px solid currentColor;border-radius:4px;opacity:.55;flex:none}
+.list{border-right:1px solid #ececf4;padding:20px 18px;overflow:hidden;background:#fff}
+.card{border:1px solid #ececf4;border-radius:10px;padding:18px;margin-bottom:16px}
+.card.on{border-color:#5b4ee9;background:#f6f5ff}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card .nm{font-size:22px;font-weight:600;color:#181825}
+.card .by{font-size:16px;color:#8484a4}
+.card p{margin-top:8px;font-size:16px;line-height:1.5;color:#6b6b85}
+.tag{display:inline-block;margin-top:12px;padding:5px 12px;border-radius:6px;background:#f0f0f6;
+  font-size:15px;color:#545472}
+.pane{padding:26px 30px;overflow:hidden}
+.pane .row{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.pane h2{font-size:34px;font-weight:600;color:#181825}
+.btn{background:#5b4ee9;color:#fff;border-radius:8px;padding:10px 20px;font-size:18px;font-weight:500}
+.crumb{margin-top:14px;font-size:15px;letter-spacing:.08em;color:#8484a4}
+.pane .body{margin-top:16px;font-size:19px;line-height:1.6;color:#545472}
+.files{margin-top:22px;border:1px solid #ececf4;border-radius:10px;padding:16px 18px;font-size:16px;
+  letter-spacing:.06em;color:#8484a4}
+.skill{margin-top:20px;border:1px solid #ececf4;border-radius:10px;padding:18px}
+.skill .h{display:flex;justify-content:space-between;font-size:17px;color:#8484a4}
+.skill h4{margin-top:14px;font-size:25px;font-weight:600;color:#181825}
+.skill p{margin-top:10px;font-size:17px;line-height:1.55;color:#6b6b85}
+</style>
+<div class="app">
+  <div class="bar">
+    <span class="dot" style="background:#ff5f57"></span>
+    <span class="dot" style="background:#febc2e"></span>
+    <span class="dot" style="background:#28c840"></span>
+    <span style="margin-left:20px;font-size:20px;color:#545472">All</span>
+    <span style="margin-left:auto;font-size:18px;color:#8484a4">＋ Add skill</span>
+    <span style="font-size:18px;color:#8484a4">🔍 Search</span>
+  </div>
+  <div class="side">
+    <h3>Loomery AI Skills</h3>
+    <div class="cat on"><i></i>All</div>
+    <div class="cat"><i></i>General</div>
+    <div class="cat"><i></i>Engineering</div>
+    <div class="cat"><i></i>Product</div>
+    <div class="cat"><i></i>Design</div>
+    <div class="cat"><i></i>Growth</div>
+    <div class="cat"><i></i>Ops</div>
+    <div class="cat"><i></i>Delivery</div>
+  </div>
+  <div class="list">
+    <div class="card on">
+      <div class="top"><span class="nm">competitor-research</span><span class="by">brett1721</span></div>
+      <p>Runs competitor research for a client or prospect — business context plus a hands-on audit of competitors' digital experiences.</p>
+      <span class="tag">Growth</span> <span class="tag">Product</span>
+    </div>
+    <div class="card">
+      <div class="top"><span class="nm">day-planner</span><span class="by">Tom Holmes</span></div>
+      <p>Use to get the AI to plan your time today. Works best with connectors to todo and calendar apps.</p>
+      <span class="tag">General</span>
+    </div>
+    <div class="card">
+      <div class="top"><span class="nm">loomery-skill-creator</span><span class="by">Milly</span></div>
+      <p>Walks you through adding a new skill to Heddle, and keeps the quality gates in place.</p>
+      <span class="tag">General</span>
+    </div>
+    <div class="card">
+      <div class="top"><span class="nm">sales-call-wrap</span><span class="by">Patrick B</span></div>
+      <p>Wraps up a sales call: drafts a reply email, adds a note to Hubspot, drafts a proposal.</p>
+    </div>
+  </div>
+  <div class="pane">
+    <div class="row"><h2>competitor-research</h2><span class="btn">Download</span></div>
+    <div class="crumb mono">DOMAINS/COMPETITOR-RESEARCH</div>
+    <p class="body">Runs competitor research for a client or prospect — business context (positioning, pricing, scale, strategy) plus a hands-on audit of competitors' digital experiences, with screenshots, feature comparison tables, hygiene vs delighter analysis and recommendations. Outputs a doc, a Miro board or slides.</p>
+    <div class="files mono">▸ SUPPORTING FILES (4)</div>
+    <div class="skill">
+      <div class="h"><span class="mono">SKILL.md</span><span>4 files</span></div>
+      <h4>Competitor research</h4>
+      <p>Produce competitor research a client would pay for: evidence-based, illustrated with real screenshots, and ending in recommendations they can act on. This skill exists because ad-hoc competitor research tends to fail in the same ways — competitor lists that miss adjacent players, feature claims that turn out to be wrong, walls of text with no visuals.</p>
+    </div>
+  </div>
+</div>

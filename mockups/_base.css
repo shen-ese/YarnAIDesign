@@ -1,0 +1,8 @@
+@font-face{font-family:"The Future";font-weight:400;src:url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c6f7b8627595515dd_the-future-regular.woff2") format("woff2")}
+@font-face{font-family:"The Future";font-weight:500;src:url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c8d5fc3a693e0c1f4_the-future-medium.woff2") format("woff2")}
+@font-face{font-family:"The Future";font-weight:600 700;src:url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793cd205f1234adef23b_the-future-bold.woff2") format("woff2")}
+@font-face{font-family:"The Future Mono";font-weight:400 500;src:url("https://cdn.prod.website-files.com/5f4d0bcb4cc4d2b9e0b3005d/66d0793c0504ee3a8f2b67f9_the-future-mono-regular.woff2") format("woff2")}
+*{box-sizing:border-box;margin:0}
+body{width:1600px;height:1000px;font-family:"The Future",Jost,system-ui,sans-serif;
+  background:#f5f5fa;overflow:hidden;-webkit-font-smoothing:antialiased}
+.mono{font-family:"The Future Mono","IBM Plex Mono",monospace}
