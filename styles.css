@@ -311,8 +311,14 @@ a { color: inherit; }
 .pstep__name { display: flex; align-items: center; gap: 9px; margin: 0;
   font-family: var(--font-mono); font-size: var(--type-small); letter-spacing: 0.08em; color: var(--text-product); }
 .pstep__mark { width: 26px; height: 26px; flex: none; }
-.pstep__title { font-size: var(--type-section); font-weight: 600; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
-.pstep__desc { font-size: var(--type-lead); line-height: 1.5; color: var(--text-secondary); margin: 0; }
+.pstep__title { font-size: 34px; font-weight: 600; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+.pstep__desc { font-size: var(--type-lead); line-height: 1.55; color: var(--text-secondary); margin: 0; }
+/* only Warp has a deep dive to link to */
+.pstep__more { align-self: flex-start; margin-top: 6px; font-size: var(--type-base); font-weight: 500;
+  color: var(--text-product); text-decoration: none; border-bottom: 1px solid currentColor;
+  padding-bottom: 2px; }
+.pstep__more span { display: inline-block; transition: transform var(--dur-fast) var(--ease-out); }
+.pstep__more:hover span { transform: translateX(3px); }
 
 
 .pscroll__sticky { position: sticky; top: 0; height: 100vh;
