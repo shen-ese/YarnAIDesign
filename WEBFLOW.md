@@ -150,18 +150,27 @@ Everything else is native.
 
 ## 5 · Media
 
-The three product images in the Built by Loomery section are **mockups**, not
-real screenshots: `images/product-warp.png`, `product-heddle.png`,
-`product-bobbin.png`. They are rendered from HTML in `mockups/`, so they can be
-edited and re-rendered rather than redrawn — see `mockups/README.md`.
+Every media slot is filled, but with **mockups rather than real screenshots**:
+
+| Slot | File |
+|---|---|
+| Warp | `images/product-warp.png` |
+| Heddle | `images/product-heddle.png` |
+| Bobbin | `images/product-bobbin.png` |
+| Warp session | `images/warp-session.gif` — animated, 12 frames, 6.7s, loops |
+| Case studies | `images/case-*.png` / `.jpg` (these are real) |
+
+They are rendered from HTML in `mockups/` so they can be edited and
+re-rendered rather than redrawn — see `mockups/README.md`. The GIF is built by
+stacking every frame as one tall page, screenshotting once and slicing it,
+which avoids a screenshot per frame.
 
 Swap them for real screen recordings when those exist. The `.media` box already
-sets `object-fit: cover` and a 16:10 ratio, so nothing needs resizing first.
+sets `object-fit: cover` and the right ratio, so nothing needs resizing first.
 
 **If you use video:** always `muted` + `playsinline` or iOS won't autoplay, and
-add a `poster` so there's something to look at before it loads.
-
-One still outstanding: the `warp-session` slot in the Warp deep dive.
+add a `poster` so there's something to look at before it loads. Prefer MP4 over
+the GIF — 330KB of GIF is roughly ten times what the same clip costs as video.
 
 ## 6 · Gotchas
 
