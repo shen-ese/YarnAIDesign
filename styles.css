@@ -173,7 +173,7 @@ a { color: inherit; }
    transition was a double image, and nothing said which roles stayed.
    Here the two that stay never flicker, the five that go collapse to zero
    width, and the two new ones open out — so the row shortens in place. */
-.tstage { position: relative; min-height: 132px; }
+.tstage { position: relative; height: 132px; }
 .trow { display: flex; align-items: stretch; height: 100%;
   --tw: calc((100% - 6 * var(--s-3)) / 7); }
 .trole { flex: 0 0 var(--tw); margin-right: var(--s-3); min-width: 0; }
@@ -204,7 +204,9 @@ a { color: inherit; }
    tile was breaking "Researcher" across lines, which is busy for content
    that is on its way out anyway */
 .trow .trole--leaves .trole__name,
-.trow .trole--leaves .trole__note { white-space: nowrap; }
+.trow .trole--leaves .trole__note,
+.trow .trole--arrives .trole__name,
+.trow .trole--arrives .trole__note { white-space: nowrap; }
 
 /* the "Stays" tag only means anything once something has left */
 .trole--stays .trole__tag { opacity: var(--pm); }
@@ -237,7 +239,7 @@ a { color: inherit; }
   .vscroll__track { display: none; }
   .vscroll__note { min-height: 0; }
   .lc .lb { width: var(--b); }
-  .tstage { min-height: 0; }
+  .tstage { height: auto; }
   .trow { flex-wrap: wrap; --tw: calc((100% - var(--s-3)) / 2); }
   .trole--leaves, .trole--arrives { flex-basis: var(--tw); margin-right: var(--s-3);
     padding: 14px; border-width: 1px; opacity: 1; }
