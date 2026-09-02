@@ -16,13 +16,13 @@ the matching `images/product-*.png`.
 
 ## The Warp session GIF — `images/warp-session.gif`
 
-`gen_session.py` writes `session.html`: all 36 animation frames laid out in a
+`gen_session.py` writes `session.html`: all 48 animation frames laid out in a
 **3-wide grid**, so one screenshot captures the whole sequence rather than one
 per frame. It writes `session.grid` alongside it with `W,H,cols,rows,count`.
 
 Do not go back to a single tall column: Chrome's full-page screenshot drifts
 vertically past roughly 20,000px, and the late frames come out offset. The grid
-keeps both dimensions modest (4200 x 7344).
+keeps both dimensions modest (4200 x 9792).
 
 ```bash
 python3 gen_session.py     # writes session.html, session.durations, session.grid
@@ -59,6 +59,11 @@ Two things about file size, both counterintuitive:
   clip that is 1061KB versus 273KB — the same 36 frames.
 - **Do not downscale the frames.** Resampling softens the edges and the noise
   defeats run-length compression, so the GIF gets *larger*. Cut frames instead.
+- **Never change two things in one frame.** The modal closing and the new
+  source appearing together read as a jolt. It needs the modal to fade out
+  over a couple of frames, then the source to land, then the input to focus —
+  one change at a time.
+- `SLOW` at the top scales every duration, for pacing the whole clip at once.
 
 Always play the result back and diff it against the source frames before
 shipping — a bad capture or a disposal mistake looks fine frame-by-frame and

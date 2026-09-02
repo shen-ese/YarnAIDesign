@@ -65,7 +65,7 @@ def reply_upto(frac):
 
 
 def modal_html(stage):
-    """stage: grid | slack | dd | ddopen | chosen | confirm"""
+    """stage: grid | slack | ddopen | chosen | confirm | out1 | out2"""
     tiles = ''
     for name, col, d in CONNECTORS:
         on = ' on' if (name == 'Slack' and stage != 'grid') else ''
@@ -90,9 +90,11 @@ def modal_html(stage):
     btn = ('<div class="cta%s">Confirm connection</div>'
            % ('' if ready else ' off'))
     press = ' pressed' if stage == 'confirm' else ''
-    return ('<div class="veil"><div class="modal%s"><h4>Connect a source</h4>'
+    fade = {'out1': ' v1', 'out2': ' v2'}.get(stage, '')
+    mfade = {'out1': ' m1', 'out2': ' m2'}.get(stage, '')
+    return ('<div class="veil%s"><div class="modal%s%s"><h4>Connect a source</h4>'
             '<div class="grid">%s</div>%s%s</div></div>'
-            % (press, tiles, picker, btn))
+            % (fade, press, mfade, tiles, picker, btn))
 
 
 def frame(typed=None, sent=False, dots=0, reply=0.0, cited=False,
@@ -148,7 +150,7 @@ def frame(typed=None, sent=False, dots=0, reply=0.0, cited=False,
 
 
 # typed a few characters at a time rather than in three jumps
-TYPE_STEPS = [QUERY[:n] for n in range(4, len(QUERY), 4)] + [QUERY]
+TYPE_STEPS = [QUERY[:n] for n in range(2, len(QUERY), 2)] + [QUERY]
 
 SEQ = [
     (frame(),                                              800),
@@ -158,10 +160,13 @@ SEQ = [
     (frame(modal='dd'),                                    420),
     (frame(modal='ddopen'),                                620),
     (frame(modal='chosen'),                                480),
-    (frame(modal='confirm'),                               400),
-    (frame(slack=True),                                    900),
+    (frame(modal='confirm'),                               340),
+    (frame(modal='out1', slack=True),                      130),
+    (frame(modal='out2', slack=True),                      130),
+    (frame(slack=True),                                    480),
+    (frame(slack=True, typed=''),                          300),
 ] + [
-    (frame(slack=True, typed=t), 70 if i < len(TYPE_STEPS) - 1 else 560)
+    (frame(slack=True, typed=t), 55 if i < len(TYPE_STEPS) - 1 else 520)
     for i, t in enumerate(TYPE_STEPS)
 ] + [
     (frame(slack=True, sent=True, typed=None),             300),
@@ -245,6 +250,10 @@ body{width:%(GW)spx;background:#e9e9f2;font-family:"The Future",Jost,system-ui,s
 
 /* ---- connector modal ---- */
 .veil{position:absolute;inset:0;background:rgba(24,24,37,.34);display:grid;place-items:center}
+.veil.v1{background:rgba(24,24,37,.20)}
+.veil.v2{background:rgba(24,24,37,.07)}
+.modal.m1{opacity:.55;transform:scale(.985)}
+.modal.m2{opacity:.18;transform:scale(.97)}
 .modal{width:520px;background:#fff;border-radius:8.4px;padding:22px;
   box-shadow:0 24px 60px rgba(24,24,37,.30)}
 .modal.pressed{box-shadow:0 12px 30px rgba(24,24,37,.24)}
@@ -282,8 +291,10 @@ html = ('<meta charset="utf-8"><style>%s%s</style>%s'
         % (FONTS, CSS, ''.join(f for f, _ in SEQ)))
 here = os.path.dirname(os.path.abspath(__file__))
 open(os.path.join(here, 'session.html'), 'w', encoding='utf-8').write(html)
-open(os.path.join(here, 'session.durations'), 'w').write(','.join(str(d) for _, d in SEQ))
+SLOW = 1.10   # asked for 10%% slower
+open(os.path.join(here, 'session.durations'), 'w').write(
+    ','.join(str(int(round(d * SLOW))) for _, d in SEQ))
 rows = -(-len(SEQ) // COLS)
 open(os.path.join(here, 'session.grid'), 'w').write('%d,%d,%d,%d,%d' % (W, H, COLS, rows, len(SEQ)))
 print('frames: %d | grid %dx%d = %dx%d px | run: %.1fs'
-      % (len(SEQ), COLS, rows, W * COLS, H * rows, sum(d for _, d in SEQ) / 1000))
+      % (len(SEQ), COLS, rows, W * COLS, H * rows, sum(d for _, d in SEQ) * SLOW / 1000))

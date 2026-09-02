@@ -157,7 +157,7 @@ Every media slot is filled, but with **mockups rather than real screenshots**:
 | Warp | `images/product-warp.png` |
 | Heddle | `images/product-heddle.png` |
 | Bobbin | `images/product-bobbin.png` |
-| Warp session | `images/warp-session.gif` — animated, 36 frames, 11.2s, loops |
+| Warp session | `images/warp-session.gif` — animated, 48 frames, 12.7s, loops |
 | Case studies | `images/case-*.png` / `.jpg` (these are real) |
 
 They are rendered from HTML in `mockups/` so they can be edited and
@@ -171,8 +171,8 @@ sets `object-fit: cover` and the right ratio, so nothing needs resizing first.
 **If you use video:** always `muted` + `playsinline` or iOS won't autoplay, and
 add a `poster` so there's something to look at before it loads.
 
-**Prefer MP4 for the session clip in the build.** The GIF is 273KB and the
-same 11s clip is roughly 80-120KB as video. Notes in `mockups/README.md` on
+**Prefer MP4 for the session clip in the build.** The GIF is 358KB and the
+same 13s clip is roughly 80-120KB as video. Notes in `mockups/README.md` on
 why it is that small — the short version is `disposal=1`, which lets each
 frame be cropped to the region that changed.
 
