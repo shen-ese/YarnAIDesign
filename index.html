@@ -130,42 +130,27 @@
 </section>
 
 <!-- ========================= WHERE THE TIME GOES ========================= -->
-<section class="section section--ranked" id="lifecycle">
-  <div class="wrap">
-    <div class="rank-rule reveal"></div>
-    <p class="eyebrow eyebrow--ranked reveal">Across the lifecycle</p>
-    <h2 class="section-title reveal" data-d="1">Where the time goes</h2>
-    <p class="lead reveal" data-d="2">Agents draft at every stage, so every stage tightens. Build and design change most.</p>
-
-    <div class="variant lc" id="cycle" data-step="1">
-      <div class="lc__steps" role="group" aria-label="Project timeline, cycling automatically">
-        <button class="lc__step" type="button" data-go="1" aria-current="true">1. A normal project<i class="lc__tick" aria-hidden="true"></i></button>
-        <button class="lc__step" type="button" data-go="2" aria-current="false">2. Agents in discovery<i class="lc__tick" aria-hidden="true"></i></button>
-        <button class="lc__step" type="button" data-go="3" aria-current="false">3. Build collapses<i class="lc__tick" aria-hidden="true"></i></button>
-        <button class="lc__step" type="button" data-go="4" aria-current="false">4. Six weeks back<i class="lc__tick" aria-hidden="true"></i></button>
-      </div>
-      <div class="lbar-wrap">
-        <p class="lref__label">A normal project</p>
-        <div class="lref" aria-hidden="true"><span class="lref__b" style="width:8.87%"></span><span class="lref__b" style="width:13.71%"></span><span class="lref__b" style="width:41.94%"></span><span class="lref__b" style="width:12.1%"></span><span class="lref__b" style="width:9.68%"></span><span class="lref__b" style="width:10.48%"></span></div>
-        <p class="lc__now" id="cycleNow">A normal project</p>
-        <div class="lbar">
-          <div class="lb lb--early" style="--a:8.87%;--b:6.61%;--c:6.61%;--d:6.61%"><span class="lb__l">Discover</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-          <div class="lb lb--early" style="--a:13.71%;--b:7.26%;--c:7.26%;--d:7.26%"><span class="lb__l">Design</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-          <div class="lb lb--build" style="--a:41.94%;--b:41.94%;--c:11.29%;--d:11.29%"><span class="lb__l">Build</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-          <div class="lb" style="--a:12.1%;--b:12.1%;--c:12.1%;--d:8.47%"><span class="lb__l">Test</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-          <div class="lb" style="--a:9.68%;--b:9.68%;--c:9.68%;--d:7.74%"><span class="lb__l">Ship</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-          <div class="lb" style="--a:10.48%;--b:10.48%;--c:10.48%;--d:8.06%"><span class="lb__l">Learn</span><span class="lb__a"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z" fill="#fff"/></svg></span></div>
-        <div class="lb lb--gain" style="--a:0%;--b:8.7%;--c:39%;--d:46.69%"><span class="lb__l">Reclaimed</span></div>
-        </div>
-      </div>
-      <p class="lc__cap" id="cycleCap">A normal project. <b>Build is where the calendar goes</b> — everything else waits on it.</p>
-      <div class="ba-readout lc__readout" data-for="cycle">
-        <div class="ba-metric"><div class="ba-metric__value" data-steps="12,11,7,6">12</div><div class="ba-metric__label">weeks, kick-off to live</div></div>
-        <div class="ba-metric ba-metric--saved"><div class="ba-metric__value" data-steps="0,1,5,6">0</div><div class="ba-metric__label">weeks reclaimed</div></div>
-        <div class="ba-metric"><div class="ba-metric__value" data-steps="0,2,3,6" data-suffix="/6">0/6</div><div class="ba-metric__label">stages with agents drafting</div></div>
+<section class="section section--ranked section--scrub" id="lifecycle">
+  <div class="vscroll lc" id="cycle" data-state="before">
+    <div class="vscroll__sticky">
+      <div class="wrap">
+        <div class="rank-rule reveal"></div>
+        <p class="eyebrow eyebrow--ranked reveal">Across the lifecycle</p>
+        <h2 class="section-title reveal" data-d="1">Where the time goes</h2>
+        <p class="vscroll__label" id="cycleLabel">Without AI · 12 weeks</p>
+              <div class="lbar">
+                  <div class="lb" style="--a:8.87%;--b:6.61%;--ai:0.3"><span class="lb__l">Discover</span><span class="lb__a"></span></div>
+                  <div class="lb" style="--a:13.71%;--b:7.26%;--ai:0.5"><span class="lb__l">Design</span><span class="lb__a"></span></div>
+                  <div class="lb" style="--a:41.94%;--b:11.29%;--ai:0.62"><span class="lb__l">Build</span><span class="lb__a"></span></div>
+                  <div class="lb" style="--a:12.1%;--b:8.47%;--ai:0.34"><span class="lb__l">Test</span><span class="lb__a"></span></div>
+                  <div class="lb" style="--a:9.68%;--b:7.74%;--ai:0.24"><span class="lb__l">Ship</span><span class="lb__a"></span></div>
+                  <div class="lb" style="--a:10.48%;--b:8.06%;--ai:0.28"><span class="lb__l">Learn</span><span class="lb__a"></span></div>
+                <div class="lb lb--gain" style="--a:0%;--b:46.69%"><span class="lb__l">6 weeks reclaimed</span></div>
+              </div>
+        <p class="vscroll__note" id="cycleCap">Build is where the calendar goes — every other stage waits on it.</p>
       </div>
     </div>
-
+    <div class="vscroll__track" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -308,13 +293,13 @@
         <span class="prin__n">02</span>
         <h3 class="prin__title">Guardrails before autonomy</h3>
         <p class="prin__body">Tests, CI and static analysis come before agent freedom. We review the commits, not the summary, and bin mediocre work rather than ship it.</p>
-        <p class="prin__practice"><b>In practice</b>tests, CI and static analysis gate every agent branch</p>
+        <p class="prin__practice"><b>In practice</b>an agent's work can't merge until the automated checks pass</p>
       </article>
       <article class="prin reveal" data-d="2">
         <span class="prin__n">03</span>
         <h3 class="prin__title">Codify context, don't just prompt</h3>
         <p class="prin__body">Standards and decisions get written down as machine-readable context, so agents and teammates act on them reliably instead of everyone re-explaining.</p>
-        <p class="prin__practice"><b>In practice</b>decisions land in docs/technical/decisions.md, not a chat</p>
+        <p class="prin__practice"><b>In practice</b>decisions live in the repo, not in a chat</p>
       </article>
       <article class="prin reveal" data-d="3">
         <span class="prin__n">04</span>
@@ -380,31 +365,30 @@
 </section>
 
 <!-- ========================= TEAM SHAPE ========================= -->
-<section class="section section--sunk" id="team">
-  <div class="wrap">
-    <p class="eyebrow reveal">The team shape</p>
-    <h2 class="section-title reveal" data-d="1">The team gets smaller. The people get more senior.</h2>
-    <p class="lead reveal" data-d="2">Agents don't replace the team — they absorb the work that used to need more of it. Two senior makers stay in charge, with specialist craft on call.</p>
-    <div class="team-block">
-      <div class="tm-ctrl">
-        <div class="ba-toggle" role="group" aria-label="Compare team shape">
-          <button class="ba-btn" type="button" data-target="teamA" data-state="before" aria-pressed="true">Cross-functional team</button>
-          <button class="ba-btn" type="button" data-target="teamA" data-state="after" aria-pressed="false">With YarnAI</button>
+<section class="section section--sunk section--scrub" id="team">
+  <div class="vscroll" id="tscroll" data-state="before">
+    <div class="vscroll__sticky">
+      <div class="wrap">
+        <p class="eyebrow reveal">The team shape</p>
+        <h2 class="section-title reveal" data-d="1">The team gets smaller. The people get more senior.</h2>
+        <p class="vscroll__label" id="teamLabel">A cross-functional team · 7 people</p>
+          <div class="tstage">
+          <div class="trow">
+          <div class="trole trole--stays"><span class="trole__tag">Stays</span><span class="trole__icon"><i></i><u></u></span><span class="trole__name">Product Engineer</span><span class="trole__note">owns more</span></div>
+          <div class="trole trole--stays"><span class="trole__tag">Stays</span><span class="trole__icon"><i></i><u></u></span><span class="trole__name">Strategic Designer</span><span class="trole__note">owns more</span></div>
+          <div class="trole trole--leaves"><span class="trole__icon"><i></i><u></u></span><span class="trole__name">Delivery Manager</span><span class="trole__note">co-ordination absorbed</span></div>
+          <div class="trole trole--leaves"><span class="trole__icon"><i></i><u></u></span><span class="trole__name">BA</span><span class="trole__note">synthesis absorbed</span></div>
+          <div class="trole trole--leaves"><span class="trole__icon"><i></i><u></u></span><span class="trole__name">QA</span><span class="trole__note">test drafting absorbed</span></div>
+          <div class="trole trole--leaves"><span class="trole__icon"><i></i><u></u></span><span class="trole__name">2nd Engineer</span><span class="trole__note">throughput absorbed</span></div>
+          <div class="trole trole--leaves"><span class="trole__icon"><i></i><u></u></span><span class="trole__name">Researcher</span><span class="trole__note">scanning absorbed</span></div>
+          <div class="trole trole--arrives trole--agents"><span class="trole__tag">Added</span><span class="trole__icon trole__icon--ai"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 0c.5 3.3 2.7 5.5 6 6-3.3.5-5.5 2.7-6 6-.5-3.3-2.7-5.5-6-6 3.3-.5 5.5-2.7 6-6Z"/></svg></span><span class="trole__name">Agent fleet · 24/7</span><span class="trole__note">drafts, never decides</span></div>
+          <div class="trole trole--arrives trole--counsel"><span class="trole__tag">On call</span><span class="trole__icon"><i></i><u></u></span><span class="trole__name">Product counsel</span><span class="trole__note">specialist craft, on call</span></div>
+          </div>
         </div>
-      </div>
-      <div class="team-row" data-ba id="teamA">
-        <div class="role role--core" style="--delay:0ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Product Engineer</span><span class="role__note">stays, and owns more</span></div>
-        <div class="role role--core" style="--delay:60ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Strategic Designer</span><span class="role__note">stays, and owns more</span></div>
-        <div class="role role--absorbed" style="--delay:120ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Delivery Manager</span><span class="role__note">coordination absorbed</span></div>
-        <div class="role role--absorbed" style="--delay:160ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">BA</span><span class="role__note">synthesis absorbed</span></div>
-        <div class="role role--absorbed" style="--delay:200ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">QA</span><span class="role__note">test drafting absorbed</span></div>
-        <div class="role role--absorbed" style="--delay:240ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">2nd Engineer</span><span class="role__note">throughput absorbed</span></div>
-        <div class="role role--absorbed" style="--delay:280ms"><span class="role__icon"><i></i><u></u></span><span class="role__name">Researcher</span><span class="role__note">scanning absorbed</span></div>
-        <div class="role role--agents" style="--delay:340ms"><span class="role__tag">Added</span><span class="role__name">Agent fleet · 24/7</span><span class="role__note">drafts, never decides</span></div>
-        <div class="role role--counsel" style="--delay:400ms"><span class="role__tag">On call</span><span class="role__name">Product counsel</span><span class="role__note">specialist craft, brought in</span></div>
+        <p class="vscroll__note" id="teamNote">Seven people, each holding one part of the work.</p>
       </div>
     </div>
-
+    <div class="vscroll__track" aria-hidden="true"></div>
   </div>
 </section>
 

@@ -71,56 +71,7 @@
     }
   }
 
-  /* ---------- 4 · before / after blocks --------------------
-     Used twice: the lifecycle track and the team row.
-     One class flips the whole thing; everything animated is
-     width, flex-grow, opacity or transform.
-     -------------------------------------------------------- */
-  function wireBeforeAfter(el) {
-    var id       = el.id;
-    var buttons  = document.querySelectorAll('.ba-btn[data-target="' + id + '"]');
-    var captions = document.querySelectorAll('.ba-caption[data-for="' + id + '"]');
-    var readout  = document.querySelector('.ba-readout[data-for="' + id + '"]');
-    var counters = readout ? readout.querySelectorAll('[data-count]') : [];
-    var played   = false;
-
-    function setState(state) {
-      var after = state === 'after';
-      el.classList.toggle('is-after', after);
-      if (readout) readout.classList.toggle('is-after', after);
-
-      Array.prototype.forEach.call(buttons, function (b) {
-        b.setAttribute('aria-pressed', String(b.dataset.state === state));
-      });
-      Array.prototype.forEach.call(captions, function (c) {
-        c.hidden = (c.dataset.cap !== state);
-      });
-      Array.prototype.forEach.call(counters, function (c) {
-        countTo(c, Number(after ? c.dataset.after : c.dataset.before), c.dataset.suffix || '', 700);
-      });
-    }
-
-    Array.prototype.forEach.call(buttons, function (b) {
-      b.addEventListener('click', function () { setState(b.dataset.state); });
-    });
-
-    if (el.hasAttribute('data-autoplay') && hasIO) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting || played) return;
-          played = true;
-          setTimeout(function () { setState('after'); }, reduced ? 0 : 600);
-          io.disconnect();
-        });
-      }, { threshold: 0.4 });
-      io.observe(el);
-    }
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll('[data-ba]'), wireBeforeAfter);
-  window.yarnCountTo = countTo;   /* the steppers below reuse it */
-
-  /* ---------- 5 · sub-nav current section ------------------ */
+  /* ---------- 4 · sub-nav current section ------------------ */
   var links = document.querySelectorAll('.subnav__link');
   if (links.length && hasIO) {
     var map = {};
@@ -143,228 +94,82 @@
 })();
 
 /* ============================================================
-   LIFECYCLE — four steps on a timer
-   Advances itself; the buttons jump the reader to a step and the
-   cycle carries on from there.
+   VSCROLL — before/after scrubbed by scroll, used twice
+   Sets two custom properties on the section:
+     --p   raw progress 0..1 through the sticky travel
+     --pm  the same, ramped 0..1 across the middle third
+   CSS does the rest, so nothing here touches layout directly.
    ============================================================ */
 (function () {
-  var cycle = document.getElementById('cycle');
-  if (!cycle) return;
-
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CAPS = [
-    "A normal project. <b>Build is where the calendar goes</b> \u2014 everything else waits on it.",
-    "Agents draft in discover and design. <b>The front of the project tightens</b> before a line of code is written.",
-    "Agents draft the build too. <b>The bottleneck collapses</b> \u2014 520 down to 130.",
-    "Test, ship and learn tighten as well. <b>Six weeks come back</b>, and a person still signs off every merge."
-  ];
 
-  var buttons = cycle.querySelectorAll('.lc__step');
-  var cap     = document.getElementById('cycleCap');
-  var now     = document.getElementById('cycleNow');
-  var readout = cycle.querySelector('.lc__readout');
-  var metrics = readout ? readout.querySelectorAll('[data-steps]') : [];
-  var count   = window.yarnCountTo;
+  function wire(root, copy) {
+    if (!root) return;
+    var track = root.querySelector('.vscroll__track');
+    var label = root.querySelector('.vscroll__label');
+    var note  = root.querySelector('.vscroll__note');
+    if (!track) return;
 
-  /* the words used to hard-cut while the bars were still gliding.
-     Fade out, swap, fade back in, so text and diagram change together. */
-  var capTimer = null;
-  function setCap(html) {
-    if (!cap) return;
-    clearTimeout(capTimer);
-    if (reduced) { cap.innerHTML = html; return; }
-    cap.classList.add('is-swapping');
-    capTimer = setTimeout(function () {
-      cap.innerHTML = html;
-      cap.classList.remove('is-swapping');
-    }, 150);
-  }
-
-  /* dur: how long the bars are taking, so the counters land with them
-     rather than finishing early and sitting dead */
-  function go(n, dur) {
-    cycle.dataset.step = String(n);
-    Array.prototype.forEach.call(buttons, function (b) {
-      b.setAttribute('aria-current', String(Number(b.dataset.go) === n));
-    });
-    setCap(CAPS[n - 1]);
-    /* the live bar is labelled with the step it is showing, so it pairs with
-       the "A normal project" label on the reference strip above it */
-    if (now) {
-      var btn = cycle.querySelector('.lc__step[data-go="' + n + '"]');
-      if (btn) now.textContent = btn.textContent.replace(/^\s*\d+\.\s*/, '').trim();
+    /* reduced motion: land on the state that makes the argument, no scrubbing */
+    if (reduced) {
+      root.style.setProperty('--p', 1);
+      root.style.setProperty('--pm', 1);
+      root.dataset.state = 'after';
+      if (label) label.textContent = copy.after[0];
+      if (note)  note.innerHTML    = copy.after[1];
+      return;
     }
-    if (readout) readout.classList.toggle('is-after', n > 1);
-    Array.prototype.forEach.call(metrics, function (m) {
-      var to = Number(m.dataset.steps.split(',')[n - 1]);
-      if (count) count(m, to, m.dataset.suffix || '', reduced ? 0 : (dur || 900));
-      else m.textContent = to + (m.dataset.suffix || '');
-    });
-  }
 
-  if (reduced) {
-    /* no cycling: land on the end state, which is the point of the section */
-    go(4);
-    Array.prototype.forEach.call(buttons, function (b) {
-      b.addEventListener('click', function () { go(Number(b.dataset.go), 0); });
-    });
-    return;
-  }
-
-  function ms(name) {
-    var v = getComputedStyle(cycle).getPropertyValue(name).trim();
-    return v.slice(-2) === 'ms' ? parseFloat(v) : parseFloat(v) * 1000;
-  }
-
-  var step        = 1;
-  var timer       = null;
-  var rewindTimer = null;
-  var startedAt   = 0;
-  var remaining   = 0;
-  var visible     = false;
-  var hovered     = false;
-  var focused     = false;
-
-  function dwell() { return step === 4 ? ms('--dwell-last') : ms('--dwell'); }
-  function shouldRun() { return visible && !hovered && !focused; }
-
-  function arm(wait) {
-    startedAt = Date.now();
-    remaining = wait;
-    timer = setTimeout(advance, wait);
-  }
-
-  function advance() {
-    timer = null;
-    var wrapping = step === 4;
-    show(wrapping ? 1 : step + 1, wrapping);
-    sync();
-  }
-
-  /* one place moves the diagram, whether a timer or a click asked for it */
-  function show(n, wrapping) {
-    step = n;
-    /* going back to a normal project is a rewind — one slower, unstaggered
-       move, so it does not read as a fifth step */
-    clearTimeout(rewindTimer);
-    cycle.classList.toggle('is-rewind', !!wrapping);
-    if (wrapping) {
-      rewindTimer = setTimeout(function () { cycle.classList.remove('is-rewind'); }, 1250);
+    var state = null;
+    function setState(key) {
+      if (state === key) return;
+      state = key;
+      root.dataset.state = key;
+      if (label) label.textContent = copy[key][0];
+      if (note)  note.innerHTML    = copy[key][1];
     }
-    go(step, wrapping ? 1150 : 900);
-    remaining = 0;
-  }
+    setState('before');
 
-  /* one place decides whether the timer is running, so the reasons it
-     can stop (off screen, hovered, focused) cannot fight */
-  function sync() {
-    if (shouldRun()) {
-      if (!timer) {
-        cycle.classList.remove('is-paused');
-        arm(remaining > 0 ? remaining : dwell());
-      }
-    } else {
-      if (timer) {
-        clearTimeout(timer);
-        timer = null;
-        remaining = Math.max(400, remaining - (Date.now() - startedAt));
-      }
-      cycle.classList.add('is-paused');
+    function update() {
+      var r = root.getBoundingClientRect();
+      /* the sticky child holds for (root height - viewport) of scrolling */
+      var travel = r.height - window.innerHeight;
+      if (travel <= 0) return;
+      var p = Math.min(Math.max(-r.top / travel, 0), 1);
+
+      /* ease the raw progress so the middle of the scroll does most of the
+         work — a linear map makes the first and last pixels feel dead */
+      var eased = p * p * (3 - 2 * p);
+      root.style.setProperty('--p', eased.toFixed(4));
+
+      /* the words swap across the middle third, not at a hard midpoint */
+      var pm = Math.min(Math.max((p - 0.34) / 0.32, 0), 1);
+      root.style.setProperty('--pm', pm.toFixed(4));
+      setState(pm > 0.5 ? 'after' : 'before');
     }
+
+    var queued = false;
+    function onScroll() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(function () { queued = false; update(); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
   }
 
-  /* Two observers.
-
-     `ready` gates the timer on the WHOLE block being on screen. Gating on a
-     bare 35% fired while the diagram was still clipping the bottom edge — only
-     143px of 302 showing — so by the time the reader had it comfortably in
-     view it was already a step or two in, which reads as "it didn't start on
-     scroll, it was already running".
-
-     `seen` tracks whether it has fully left, so coming back to it later
-     replays from step 1 rather than resuming mid-sequence. A small scroll that
-     only dips it below the ready line does not reset it. */
-  var needsReset = false;
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        /* a block taller than the viewport can never be wholly visible */
-        var cannotFit = e.rootBounds && e.boundingClientRect.height > e.rootBounds.height * 0.9;
-        var ready = e.intersectionRatio >= 0.99 || (cannotFit && e.isIntersecting);
-        if (ready && needsReset) {
-          needsReset = false;
-          show(1, false);
-        }
-        visible = ready;
-        sync();
-      });
-    }, { threshold: [0, 0.99] }).observe(cycle);
-
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (!e.isIntersecting) needsReset = true; });
-    }, { threshold: 0 }).observe(cycle);
-  } else {
-    visible = true; sync();
-  }
-
-  /* let someone read a step without it moving under them */
-  cycle.addEventListener('pointerenter', function () { hovered = true;  sync(); });
-  cycle.addEventListener('pointerleave', function () { hovered = false; sync(); });
-  /* Only keyboard focus pauses. A mouse click leaves the button focused, and
-     pausing on that would freeze the cycle for good once the pointer left. */
-  cycle.addEventListener('focusin', function (e) {
-    var t = e.target;
-    focused = !!(t && t.matches && t.matches(':focus-visible'));
-    sync();
+  wire(document.getElementById('cycle'), {
+    before: ['Without AI \u00b7 12 weeks',
+             'Build is where the calendar goes \u2014 every other stage waits on it.'],
+    after:  ['An AI-enhanced process \u00b7 6 weeks',
+             '<em>Agents draft</em> a share of every stage. <b>The bottleneck collapses and six weeks come back</b>, and a person still signs off every merge.']
   });
-  cycle.addEventListener('focusout', function () { focused = false; sync(); });
 
-  /* a click jumps to that step and the cycle carries on from there,
-     with a full dwell so the reader gets to look at what they picked */
-  Array.prototype.forEach.call(buttons, function (b) {
-    b.addEventListener('click', function () {
-      var n = Number(b.dataset.go);
-      if (timer) { clearTimeout(timer); timer = null; }
-      show(n, false);
-      sync();
-    });
+  wire(document.getElementById('tscroll'), {
+    before: ['A cross-functional team \u00b7 7 people',
+             'Seven people, each holding one part of the work.'],
+    after:  ['An AI-enhanced team \u00b7 2 people, plus agents',
+             'Two senior makers own the outcome. Agents draft, and specialist craft comes in when it is needed.']
   });
-})();
-
-/* ============================================================
-   BUILT BY LOOMERY — the stage follows what you are reading
-   A thin band across the middle of the viewport decides which
-   product is active; whichever step is crossing it wins.
-   ============================================================ */
-(function () {
-  var scroll = document.getElementById('pscroll');
-  if (!scroll) return;
-
-  var steps = scroll.querySelectorAll('.pstep');
-  var panes = scroll.querySelectorAll('.ppane');
-  if (!steps.length) return;
-
-  function activate(key) {
-    if (scroll.dataset.product === key) return;
-    scroll.dataset.product = key;
-    Array.prototype.forEach.call(panes, function (p) {
-      if (p.dataset.product === key) p.setAttribute('data-on', '');
-      else p.removeAttribute('data-on');
-    });
-  }
-
-  if (!('IntersectionObserver' in window)) {
-    /* no observer: show everything rather than one pane and two ghosts */
-    scroll.setAttribute('data-static', '');
-    return;
-  }
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) activate(e.target.dataset.product);
-    });
-  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-
-  Array.prototype.forEach.call(steps, function (s) { io.observe(s); });
 })();
