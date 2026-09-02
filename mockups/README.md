@@ -16,7 +16,7 @@ the matching `images/product-*.png`.
 
 ## The Warp session GIF — `images/warp-session.gif`
 
-`gen_session.py` writes `session.html`: every animation frame stacked
+`gen_session.py` writes `session.html`: all 20 animation frames stacked
 vertically as one tall page. That means **one** screenshot captures the whole
 sequence, rather than one per frame.
 
@@ -31,7 +31,7 @@ W, H = 1400, 612
 frames = [strip.crop((0, i*H, W, (i+1)*H)).convert('RGB') for i in range(len(durs))]
 merged = Image.new('RGB', (W, H*len(frames)))
 for i, f in enumerate(frames): merged.paste(f, (0, i*H))
-ref = merged.quantize(colors=128)          # one palette for all frames, or the
+ref = merged.quantize(colors=64)           # one palette for all frames, or the
 q = [f.quantize(palette=ref, dither=Image.NONE) for f in frames]   # greys shimmer
 q[0].save('../images/warp-session.gif', save_all=True, append_images=q[1:],
           duration=durs, loop=0, optimize=True, disposal=2)
@@ -40,5 +40,11 @@ EOF
 
 Edit the copy, the frame list or the per-frame durations in `gen_session.py`
 and re-run. 16:7 to match the `.media--wide` box.
+
+The sequence: connect a Slack channel as a source, then ask the project brain
+a question and watch it answer, citing that channel.
+
+Do **not** downscale the frames to save bytes — resampling softens the edges
+and the resulting noise makes the GIF larger, not smaller. Cut frames instead.
 
 Replace all of these with real screen recordings when those exist.
