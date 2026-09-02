@@ -112,9 +112,9 @@ body{width:%(W)spx;background:#e9e9f2;font-family:"The Future",Jost,system-ui,sa
 .src{border-right:1px solid #ececf4;padding:16px 14px;background:#fafaff}
 .src h3{font-size:15px;font-weight:600;color:#181825;margin-bottom:12px}
 .grp{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;margin-bottom:7px;
-  background:#e7fff8;box-shadow:inset 0 0 0 1px #9df2d6}
-.ic{width:22px;height:22px;border-radius:6px;background:#3fffc5;display:grid;place-items:center;flex:none}
-.ic svg{width:13px;height:13px;fill:#181825}
+  background:#f6f5ff;box-shadow:inset 0 0 0 1px #e0dcfb}
+.ic{width:22px;height:22px;border-radius:6px;background:#eae8fd;display:grid;place-items:center;flex:none}
+.ic svg{width:13px;height:13px;fill:#5b4ee9}
 .tx{min-width:0;display:flex;flex-direction:column}
 .nm{font-size:13.5px;font-weight:600;color:#181825;line-height:1.25}
 .ct{font-size:12px;color:#8484a4}
