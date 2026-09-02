@@ -161,6 +161,7 @@
 
   var buttons = cycle.querySelectorAll('.lc__step');
   var cap     = document.getElementById('cycleCap');
+  var now     = document.getElementById('cycleNow');
   var readout = cycle.querySelector('.lc__readout');
   var metrics = readout ? readout.querySelectorAll('[data-steps]') : [];
   var count   = window.yarnCountTo;
@@ -187,6 +188,12 @@
       b.setAttribute('aria-current', String(Number(b.dataset.go) === n));
     });
     setCap(CAPS[n - 1]);
+    /* the live bar is labelled with the step it is showing, so it pairs with
+       the "A normal project" label on the reference strip above it */
+    if (now) {
+      var btn = cycle.querySelector('.lc__step[data-go="' + n + '"]');
+      if (btn) now.textContent = btn.textContent.replace(/^\s*\d+\.\s*/, '').trim();
+    }
     if (readout) readout.classList.toggle('is-after', n > 1);
     Array.prototype.forEach.call(metrics, function (m) {
       var to = Number(m.dataset.steps.split(',')[n - 1]);

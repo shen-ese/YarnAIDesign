@@ -94,7 +94,8 @@ a { color: inherit; }
 /* ============================================================
    NAV — matches the live loomery.com header
    ============================================================ */
-.nav { display: flex; align-items: center; justify-content: space-between; padding: 20px var(--gutter); background: var(--surface-page); }
+.nav { display: flex; align-items: center; justify-content: space-between;
+  height: var(--nav-h); padding: 0 var(--gutter); background: var(--surface-page); }
 .nav__mark { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; text-decoration: none; }
 .nav__right { display: flex; align-items: center; gap: var(--s-4); }
 .nav__link { font-size: var(--type-small); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
@@ -119,7 +120,8 @@ a { color: inherit; }
    SUB-NAV — sticky
    ============================================================ */
 .subnav { position: sticky; top: 0; z-index: 40; background: var(--surface-page); border-bottom: 1px solid var(--border-subtle); }
-.subnav__inner { max-width: var(--content); margin: 0 auto; display: flex; gap: var(--s-5); padding: 20px var(--gutter); flex-wrap: wrap; }
+.subnav__inner { max-width: var(--content); margin: 0 auto; display: flex; align-items: center;
+  height: var(--nav-h); gap: var(--s-4); padding: 0 var(--gutter); flex-wrap: wrap; }
 .subnav__link { font-size: var(--type-small); text-decoration: none; color: var(--text-secondary); transition: color var(--dur-fast) var(--ease-out); }
 .subnav__link:hover, .subnav__link.is-current { color: var(--text-primary); }
 
@@ -228,12 +230,14 @@ a { color: inherit; }
    ============================================================ */
 .agents { display: grid; grid-template-columns: minmax(240px, 0.8fr) 1.2fr; gap: var(--s-6);
   background: var(--surface-inverse); color: var(--text-on-inverse); padding: var(--s-5); align-items: center; }
-.agents__brand { display: flex; flex-direction: column; gap: var(--s-3); }
-.agents__plate { background: var(--surface-page); padding: 14px 20px; display: inline-flex; align-self: flex-start; }
-.agents__plate img { width: auto; height: 30px; max-width: 170px; object-fit: contain; display: block; }
+.agents__brand { display: flex; align-items: center; }
+/* the wordmark ships black; reversed out it reads on the inverse panel */
+.agents__plate { display: inline-flex; align-self: flex-start; }
+.agents__plate img { width: auto; height: 32px; max-width: 180px; object-fit: contain;
+  display: block; filter: brightness(0) invert(1); }
 .agents__note { font-size: var(--type-small); color: var(--text-on-inverse-muted); }
-.agents__list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
-.agent { border-left: 2px solid var(--state-positive); padding-left: var(--s-3); display: flex; flex-direction: column; gap: 4px; }
+.agents__list { display: flex; gap: var(--s-6); flex-wrap: wrap; align-items: center; }
+.agent { border-left: 2px solid var(--state-positive); padding-left: var(--s-3); }
 .agent__name { font-size: var(--type-base); font-weight: 600; }
 .agent__role { font-size: var(--type-small); color: var(--text-on-inverse-muted); }
 @media (max-width: 900px) { .agents, .agents__list { grid-template-columns: 1fr; } }
@@ -245,7 +249,7 @@ a { color: inherit; }
    step, each setting opacity on the three panes.
    ============================================================ */
 .pscroll { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--s-7); margin-top: var(--s-4); align-items: stretch; }
-.pscroll__steps { display: flex; flex-direction: column; padding: 12vh 0; }
+.pscroll__steps { display: flex; flex-direction: column; padding: 7vh 0 14vh; }
 .pstep { min-height: 58vh; justify-content: center; padding: var(--s-6) 0; display: flex; flex-direction: column; gap: 10px; max-width: 460px;
   opacity: 0.4; transition: opacity var(--dur-base) var(--ease-out); }
 .pscroll[data-product="warp"]   .pstep[data-product="warp"],
@@ -275,7 +279,7 @@ a { color: inherit; }
 }
 
 .stack-divider { margin: var(--s-7) 0 var(--s-4); display: flex; align-items: center; gap: var(--s-3); }
-.stack-divider__label { font-family: var(--font-mono); font-size: var(--type-label); letter-spacing: 0.08em; color: var(--text-secondary); white-space: nowrap; }
+.stack-divider__label { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.02em; color: var(--text-secondary); white-space: nowrap; }
 .stack-divider__rule { height: 1px; background: var(--border-subtle); flex: 1; }
 .stack-divider__label b { color: var(--text-product); font-weight: 500; }
 .stack-divider--ours .stack-divider__label { color: var(--text-primary); }
@@ -290,7 +294,7 @@ a { color: inherit; }
    WARP DEEP DIVE — the cycle
    ============================================================ */
 .cycle { margin-top: var(--s-6); display: flex; flex-direction: column; gap: 10px; }
-.cycle__label { font-family: var(--font-mono); font-size: var(--type-label); letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-secondary); }
+.cycle__label { font-family: var(--font-mono); font-size: var(--type-label); letter-spacing: 0.08em; color: var(--text-secondary); }
 .chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .chip { font-size: 13px; padding: 8px 14px; border: 1px solid var(--border-subtle); color: var(--text-secondary); }
 .cycle__connector { font-size: 13px; color: var(--text-secondary); padding: 6px 0; }
@@ -486,15 +490,20 @@ a { color: inherit; }
    bar. Overlaying the two failed: once the stages shrink, their original edges
    all pile up inside the Reclaimed block, miles from the bar they belong to.
    Stacked, the comparison is a straight read down the page. */
-.lref__label { font-family:var(--font-mono); font-size:11px; letter-spacing:.08em;
+.lref__label, .lc__now { font-family:var(--font-mono); font-size:11px; letter-spacing:.08em;
   color:var(--text-secondary); margin:0 0 6px; }
+.lc__now { color:var(--text-primary); margin-top:var(--s-3); }
 .lref { display:flex; gap:6px; height:14px; margin-bottom:10px; }
 .lref__b { background:var(--border-interactive); opacity:0.45; }
 .lbar { display:flex; gap:6px; height:74px; align-items:stretch; }
 .lb { position:relative; min-width:0; background:var(--surface-inverse); color:var(--text-on-inverse);
       display:flex; align-items:center; justify-content:center; overflow:hidden; }
 .lb__l { font-size:12px; white-space:nowrap; padding:0 6px; }
-.lb__a { position:absolute; left:0; right:0; bottom:0; height:16px; background:var(--product-500); }
+/* The purple is agents joining a stage. On the trailing edge it reads as
+   something added to the stage; along the bottom it read as a progress bar. */
+.lb__a { position:absolute; top:0; bottom:0; right:0; width:22px; background:var(--product-500);
+  display:flex; align-items:center; justify-content:center; }
+.lb__a svg { width:12px; height:12px; }
 .lb--gain { background:var(--surface-gain-tint); border:1px dashed var(--state-positive); color:var(--text-secondary); }
 .lrow-label { font-family:var(--font-mono); font-size:11px; letter-spacing:.11em; text-transform:uppercase; color:var(--text-secondary); margin:0 0 8px; }
 
@@ -519,15 +528,17 @@ a { color: inherit; }
 @keyframes tick-run { from { transform:scaleX(0); } to { transform:scaleX(1); } }
 
 /* bar widths per step */
+/* reserve the agent strip so labels never run under it */
+.lc .lb:not(.lb--gain) { padding-right:22px; }
 .lc .lb { width:var(--a); transition:width var(--dur-slow) var(--ease-in-out), opacity var(--dur-base) var(--ease-out); }
 .lc[data-step="1"] .lb--gain { opacity:0; }
 .lc[data-step="2"] .lb { width:var(--b); }
 .lc[data-step="3"] .lb { width:var(--c); }
 .lc[data-step="4"] .lb { width:var(--d); }
-.lc .lb__a { transform:translateY(100%); transition:transform var(--dur-base) var(--ease-out); }
+.lc .lb__a { transform:translateX(100%); transition:transform var(--dur-base) var(--ease-out); }
 .lc[data-step="2"] .lb--early .lb__a,
 .lc[data-step="3"] .lb--early .lb__a, .lc[data-step="3"] .lb--build .lb__a,
-.lc[data-step="4"] .lb__a { transform:translateY(0); }
+.lc[data-step="4"] .lb__a { transform:translateX(0); }
 
 /* nobody asked for this transition, so it has to explain itself: lead with
    Build, the bottleneck, and let the rest follow as consequence */
@@ -544,11 +555,12 @@ a { color: inherit; }
 .lc.is-rewind .lb, .lc.is-rewind .lb__a { transition-delay:0ms; transition-duration:1150ms; }
 
 /* the numbers are the payoff, so they sit under the diagram with real air */
-.lc__readout { margin-top:var(--s-7); gap:var(--s-7); }
+.lc__readout { margin-top:var(--s-5); padding-top:var(--s-4);
+  border-top:1px solid var(--border-subtle); gap:var(--s-7); }
 .lc__readout .ba-metric__value { font-size:46px; letter-spacing:-0.02em; }
 .lc__readout .ba-metric__label { font-size:var(--type-small); margin-top:4px; }
 .lc__readout .ba-metric { min-width:180px; }
-.lc__cap { margin-top:var(--s-4); font-size:14px; color:var(--text-secondary); min-height:44px; max-width:720px;
+.lc__cap { margin-top:var(--s-3); font-size:14px; color:var(--text-secondary); min-height:44px; max-width:720px;
   transition:opacity 280ms var(--ease-out); }
 .lc__cap.is-swapping { opacity:0; transition-duration:150ms; }
 .lc__cap b { color:var(--text-primary); font-weight:600; }

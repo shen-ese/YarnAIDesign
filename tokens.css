@@ -76,10 +76,13 @@
   --focus-on-light:          #5b4ee9;
   --focus-on-dark:           #3fffc5;
 
+  /* the sticky sub-nav matches the main nav exactly */
+  --nav-h: 85px;
+
   /* --- type ---
-     The Future is the real face; Jost is the documented stand-in
-     and loads from Google Fonts, which Webflow supports natively.
-     Swap the first name in each stack when the licence lands. */
+     The Future loads from Loomery's Webflow CDN — see the @font-face
+     block at the top of this file. Jost and IBM Plex Mono stay in the
+     stacks as an offline fallback. */
   --font-sans: "The Future", "Jost", system-ui, -apple-system, sans-serif;
   --font-mono: "The Future Mono", "IBM Plex Mono", ui-monospace, monospace;
 
