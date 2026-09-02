@@ -323,7 +323,8 @@ a { color: inherit; }
 .stack-divider { margin: var(--s-7) 0 var(--s-4); display: flex; align-items: center; gap: var(--s-3); }
 .stack-divider__label { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.02em; color: var(--text-secondary); white-space: nowrap; }
 .stack-divider__rule { height: 1px; background: var(--border-subtle); flex: 1; }
-.stack-pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.stack-rest { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+@media (max-width: 1100px) { .stack-rest { grid-template-columns: 1fr 1fr; } }
 .scard { background: var(--surface-page); border: 1px solid var(--border-subtle); padding: var(--s-5); }
 .scard__title { font-size: var(--type-card); font-weight: 600; margin: 0 0 4px; }
 .scard__sub { font-size: 13px; color: var(--text-secondary); margin: 0 0 var(--s-3); }
@@ -440,7 +441,7 @@ a { color: inherit; }
   :root { --gutter: 24px; --type-display: 38px; --type-section: 30px; }
   .section { padding: var(--s-7) var(--gutter); }
   .section--ranked { padding-top: var(--s-7); }
-  .stack-grid, .cases, .outputs, .levels, .options, .creds, .gap-cols, .stats, .stack-pair, .footer__inner { grid-template-columns: 1fr; }
+  .stack-grid, .cases, .outputs, .levels, .options, .creds, .gap-cols, .stats, .stack-rest, .footer__inner { grid-template-columns: 1fr; }
   .hero { padding: 72px var(--gutter) 88px; }
 }
 
