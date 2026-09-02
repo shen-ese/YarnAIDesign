@@ -50,7 +50,7 @@ def frame(typed=None, sent=False, dots=0, reply=0.0, cited=False):
 
     thread = ''
     if sent:
-        thread += ('<div class="ask"><div class="who"><span class="av"></span>'
+        thread += ('<div class="ask"><div class="who"><span class="av">D</span>'
                    '<span class="nm2">Damon</span></div><p>%s</p></div>' % QUERY)
     if dots:
         thread += ('<div class="rep"><div class="who"><span class="av av--b">%s</span>'
@@ -73,7 +73,10 @@ def frame(typed=None, sent=False, dots=0, reply=0.0, cited=False):
     return ('<div class="f"><div class="app">'
             '<div class="bar"><span class="mark">%s</span>'
             '<span class="proj">Client × Loomery</span></div>'
-            '<div class="src"><h3>Sources</h3>%s</div>'
+            '<div class="src"><h3>Sources</h3>'
+            '<div class="acts"><div class="add">＋ Add source</div>'
+            '<div class="add add--alt">⇄ Connect source</div></div>'
+            '%s<div class="conn">Connectors</div></div>'
             '<div class="chat"><div class="thread">%s</div>'
             '<div class="input"><p class="%s">%s%s</p>'
             '<svg viewBox="0 0 24 24" class="send"><path d="M3 20l18-8L3 4l4 8-4 8z"/></svg>'
@@ -101,37 +104,47 @@ CSS = """
 body{width:%(W)spx;background:#e9e9f2;font-family:"The Future",Jost,system-ui,sans-serif;
   -webkit-font-smoothing:antialiased}
 .f{width:%(W)spx;height:%(H)spx;padding:26px;background:#e9e9f2}
-.app{height:100%%;background:#fff;border:1px solid #dcdce8;border-radius:12px;overflow:hidden;
+.app{height:100%%;background:#fff;border:1px solid #dcdce8;border-radius:8.4px;overflow:hidden;
   box-shadow:0 14px 34px rgba(24,24,37,.10);display:grid;
   grid-template-rows:50px 1fr;grid-template-columns:250px 1fr}
 .bar{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:0 18px;
   border-bottom:1px solid #ececf4;background:#fafaff}
-.mark{width:24px;height:24px;border-radius:7px;background:#5b4ee9;display:grid;place-items:center;flex:none}
+.mark{width:24px;height:24px;border-radius:4.9px;background:#5b4ee9;display:grid;place-items:center;flex:none}
 .mark svg{width:14px;height:14px;fill:#fff}
 .proj{font-size:17px;font-weight:600;color:#181825}
-.src{border-right:1px solid #ececf4;padding:15px 11px;background:#fafaff}
+.src{border-right:1px solid #ececf4;padding:15px 11px;background:#fafaff;
+  display:flex;flex-direction:column}
+.acts{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.add{border:1px solid #dcdce8;border-radius:5px;padding:8px;text-align:center;
+  font-size:12px;color:#545472;background:#fff}
+.add--alt{border-color:#d5d1fb;color:#5b4ee9}
+.conn{margin-top:auto;border-radius:5px;padding:9px;text-align:center;
+  font-size:12px;font-weight:500;color:#fff;background:#5b4ee9}
 .src h3{font-size:15px;font-weight:600;color:#181825;margin-bottom:12px}
-.grp{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;margin-bottom:7px;
+.grp{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:5.6px;margin-bottom:7px;
   background:#f6f5ff;box-shadow:inset 0 0 0 1px #e0dcfb}
-.ic{width:22px;height:22px;border-radius:6px;background:#eae8fd;display:grid;place-items:center;flex:none}
+.ic{width:22px;height:22px;border-radius:4.2px;background:#eae8fd;display:grid;place-items:center;flex:none}
 .ic svg{width:13px;height:13px;fill:#5b4ee9}
 .tx{min-width:0;display:flex;flex-direction:column}
 .nm{font-size:12.5px;font-weight:600;color:#181825;line-height:1.25}
 .ct{font-size:11px;color:#8484a4}
-.chk{margin-left:auto;width:15px;height:15px;border-radius:4px;border:1.4px solid #b9b2f5;
+.chk{margin-left:auto;width:15px;height:15px;border-radius:2.8px;border:1.4px solid #b9b2f5;
   display:grid;place-items:center;flex:none}
 .chk svg{width:9px;height:9px;fill:none;stroke:#5b4ee9;stroke-width:3}
 .chat{display:flex;flex-direction:column;padding:16px 20px;overflow:hidden}
 .thread{flex:1;display:flex;flex-direction:column;gap:12px;overflow:hidden}
 .who{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-.av{width:22px;height:22px;border-radius:6px;background:#d8d8e8;flex:none}
+.av{width:22px;height:22px;border-radius:4.2px;background:#d5d1fb;flex:none;
+  display:grid;place-items:center;font-size:11px;font-weight:600;color:#5b4ee9}
 .av--b{background:#181825;display:grid;place-items:center}
 .av--b svg{width:13px;height:13px;fill:#3fffc5}
 .nm2{font-size:14px;font-weight:600;color:#181825}
-.ask{align-self:flex-end;max-width:76%%;background:#f2f2f8;border-radius:12px 12px 3px 12px;padding:13px 16px}
+.ask{align-self:flex-end;max-width:76%%;background:#fff;border:1px solid #d5d1fb;
+  border-radius:8.4px 8.4px 2.1px 8.4px;padding:13px 16px;box-shadow:0 5px 13px rgba(91,78,233,.06)}
 .ask p{font-size:15px;line-height:1.4;color:#181825}
-.rep{max-width:94%%;background:#eae8fd;border-radius:12px 12px 12px 3px;padding:13px}
-.rep .card{background:#fff;border-radius:9px;padding:13px 15px}
+.rep{max-width:94%%;background:#fff;border:1px solid #d5d1fb;
+  border-radius:8.4px 8.4px 8.4px 2.1px;padding:14px 16px;box-shadow:0 5px 13px rgba(91,78,233,.06)}
+.rep .card{background:transparent;padding:0}
 .rep p{font-size:15px;line-height:1.5;color:#181825}
 .rep p b{font-weight:600}
 .dots{display:flex;gap:6px;padding:6px 4px 2px}
@@ -140,7 +153,7 @@ body{width:%(W)spx;background:#e9e9f2;font-family:"The Future",Jost,system-ui,sa
 .cite{margin-top:10px;padding-top:9px;border-top:1px solid #ececf4;
   font-size:12.5px;color:#545472}
 .cite b{color:#5b4ee9;font-weight:600}
-.input{margin-top:14px;border:1px solid #dcdce8;border-radius:11px;padding:13px 16px;
+.input{margin-top:14px;border:1px solid #dcdce8;border-radius:7.7px;padding:13px 16px;
   display:flex;align-items:center;gap:14px}
 .input p{font-size:15px;line-height:1.4;color:#181825}
 .input p.ph{color:#a3a3ba}
