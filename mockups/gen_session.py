@@ -103,21 +103,21 @@ body{width:%(W)spx;background:#e9e9f2;font-family:"The Future",Jost,system-ui,sa
 .f{width:%(W)spx;height:%(H)spx;padding:26px;background:#e9e9f2}
 .app{height:100%%;background:#fff;border:1px solid #dcdce8;border-radius:12px;overflow:hidden;
   box-shadow:0 14px 34px rgba(24,24,37,.10);display:grid;
-  grid-template-rows:50px 1fr;grid-template-columns:310px 1fr}
+  grid-template-rows:50px 1fr;grid-template-columns:250px 1fr}
 .bar{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:0 18px;
   border-bottom:1px solid #ececf4;background:#fafaff}
 .mark{width:24px;height:24px;border-radius:7px;background:#5b4ee9;display:grid;place-items:center;flex:none}
 .mark svg{width:14px;height:14px;fill:#fff}
 .proj{font-size:17px;font-weight:600;color:#181825}
-.src{border-right:1px solid #ececf4;padding:16px 14px;background:#fafaff}
+.src{border-right:1px solid #ececf4;padding:15px 11px;background:#fafaff}
 .src h3{font-size:15px;font-weight:600;color:#181825;margin-bottom:12px}
-.grp{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;margin-bottom:7px;
+.grp{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:8px;margin-bottom:7px;
   background:#f6f5ff;box-shadow:inset 0 0 0 1px #e0dcfb}
 .ic{width:22px;height:22px;border-radius:6px;background:#eae8fd;display:grid;place-items:center;flex:none}
 .ic svg{width:13px;height:13px;fill:#5b4ee9}
 .tx{min-width:0;display:flex;flex-direction:column}
-.nm{font-size:13.5px;font-weight:600;color:#181825;line-height:1.25}
-.ct{font-size:12px;color:#8484a4}
+.nm{font-size:12.5px;font-weight:600;color:#181825;line-height:1.25}
+.ct{font-size:11px;color:#8484a4}
 .chk{margin-left:auto;width:15px;height:15px;border-radius:4px;border:1.4px solid #b9b2f5;
   display:grid;place-items:center;flex:none}
 .chk svg{width:9px;height:9px;fill:none;stroke:#5b4ee9;stroke-width:3}
