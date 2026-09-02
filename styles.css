@@ -285,8 +285,8 @@ a { color: inherit; }
    step, each setting opacity on the three panes.
    ============================================================ */
 .pscroll { display: grid; grid-template-columns: 1fr 1.15fr; gap: var(--s-7); margin-top: var(--s-4); align-items: stretch; }
-.pscroll__steps { display: flex; flex-direction: column; padding: 25vh 0 25vh; }
-.pstep { min-height: 50vh; justify-content: center; padding: var(--s-6) 0; display: flex; flex-direction: column; gap: 10px; max-width: 460px;
+.pscroll__steps { display: flex; flex-direction: column; padding: 12.5vh 0; }
+.pstep { min-height: 36vh; justify-content: center; padding: var(--s-6) 0; display: flex; flex-direction: column; gap: 10px; max-width: 460px;
   opacity: 0.4; transition: opacity var(--dur-base) var(--ease-out); }
 .pscroll[data-product="warp"]   .pstep[data-product="warp"],
 .pscroll[data-product="heddle"] .pstep[data-product="heddle"],
@@ -320,7 +320,7 @@ a { color: inherit; }
   .ppane { position: relative; opacity: 1; pointer-events: auto; margin-bottom: var(--s-5); }
 }
 
-.stack-divider { margin: var(--s-7) 0 var(--s-4); display: flex; align-items: center; gap: var(--s-3); }
+.stack-divider { margin: var(--s-5) 0 var(--s-4); display: flex; align-items: center; gap: var(--s-3); }
 .stack-divider__label { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.02em; color: var(--text-secondary); white-space: nowrap; }
 .stack-divider__rule { height: 1px; background: var(--border-subtle); flex: 1; }
 .stack-rest { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
